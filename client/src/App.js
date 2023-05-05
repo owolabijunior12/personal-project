@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
 import './App.css';
-import ProductList from './conponent/ProductList/ProductList'
+import HomeScreen from './conponent/HomeScreen/HomeScreen'
 function App() {
   return (
     <div className="App">
-      <ProductList/>
+      <HomeScreen/>
     </div>
   );
 }
