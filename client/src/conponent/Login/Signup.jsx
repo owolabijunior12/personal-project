@@ -2,11 +2,35 @@ import React from 'react';
 import{BiLock}from 'react-icons/bi';
 import {FcGoogle} from "react-icons/fc"
 import {CgProfile} from 'react-icons/cg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {MdOutlineAlternateEmail,MdOutlineDriveFileRenameOutline} from 'react-icons/md'
 import './login.css'
-const Login = () => {
+const SignUp = () => {
+      const notify = () => toast.success(`🦄 Logged in successfully`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
   return (
     <div className='login'>
+            <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
         <h2>Welcome to Iboytech store</h2>  
          <div className='signup'>
             <FcGoogle/>  Sign-up with Google
@@ -38,7 +62,7 @@ const Login = () => {
                           <BiLock/>
                     </span>
               </div>
-              <button type="submit">Create account</button>            
+              <button type="submit" onChange={notify}>Create account</button>            
               
               <a href="http://" target="_blank" rel="noopener noreferrer">Don't have an account yet</a>
          </form>
@@ -46,4 +70,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp

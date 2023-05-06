@@ -19,7 +19,7 @@ const priceRoute =require("./route/price");
 app.use("/api/price/",priceRoute);
 //! route for product
 const productRoute =require("./route/product");
-app.use("/api/product /",priceRoute);
+app.use("/api/product/",productRoute);
 
 //!connecting to mongodb
 mongoose.connect(process.env.DB_STRINGS,{useNewurlParser : true});

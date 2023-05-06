@@ -1,31 +1,31 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../model/product");
-const product = require("../model/product");
+// const Product = require("../model/product");
 
-router.post("/save",async(req,res)=>{
+router.post("/save", async (req, res) => {
     try {
-        const newProduct = await Price.create({
-           name: req.body.name,
-           product_price: req.body.product_price,
-           imageURL:req.body.imageURL,
-           description:req.body.description,
-           category:req.body.category,
-           brand:req.body.brand,
-           product_type:req.body.product_type,
-           product_size:req.body.product_size,
-           product_color:req.body.product_color,
-           product_weight:req.body.product_weight,
-           product_quantity:req.body.product_quantity,
-           product_status:req.body.product_status
-           
-        });
-        res.status(200).send({success:true,price:newProduct});
+      const newProduct = await Product.create({
+        name: req.body.name,
+        product_price: req.body.product_price,
+        imageURL: req.body.imageURL,
+        description: req.body.description,
+        category: req.body.category,
+        brand: req.body.brand,
+        product_type: req.body.product_type,
+        product_size: req.body.product_size,
+        product_color: req.body.product_color,
+        product_weight: req.body.product_weight,
+        product_quantity: req.body.product_quantity,
+        product_status: req.body.product_status,
+      });
+      res.status(200).send({ success: true, product: newProduct });
     } catch (error) {
-        console.log(error);
-        res.status(400).send({errror:"failure to save product"})
+      console.log(error);
+      res.status(400).send({ error: "failure to save product" });
     }
-})
+  });
+  
 
 router.get("/getOne/:id", async (req, res, next) => {
   try {
