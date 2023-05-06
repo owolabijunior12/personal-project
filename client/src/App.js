@@ -8,9 +8,9 @@ function App() {
 
   return (
     <div className='h-screen bg-primary flex justify-center items-center'>       
-      {/* <Login/> */}
+      <Login/>
       {/* <HomeScreen/>  */}
-      <Signup/>
+      {/* <Signup/> */}
     
 </div>
   );
