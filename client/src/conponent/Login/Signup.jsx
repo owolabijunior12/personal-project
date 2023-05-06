@@ -9,7 +9,7 @@ const Login = () => {
     <div className='login'>
         <h2>Welcome to Iboytech store</h2>  
          <div className='signup'>
-            <FcGoogle/>  Sign- up with Google
+            <FcGoogle/>  Sign-up with Google
             </div>
          <p>or</p>
          <form className='login-form' action="">
