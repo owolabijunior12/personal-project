@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../model/product");
-// const Product = require("../model/product");
 
 router.post("/save", async (req, res) => {
     try {
@@ -46,7 +45,7 @@ router.put("/update/id",async(req,res)=>{
         res.status(200).send({success:true,product});
     } catch (error) {
         console.log(error);
-        next(error)
+        next(error);
     }
 })
 

@@ -2,8 +2,8 @@
     box-sizing: border-box;
   }
   
-  html,
-  body,
+
+  .body,
   .wrapper {
     height: 100%;
   }
@@ -14,7 +14,7 @@
     }
   }
   
-  body {
+  .login {
     display: grid;
     place-items: center;
     margin: 0;

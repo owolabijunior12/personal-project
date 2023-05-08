@@ -20,12 +20,15 @@ app.use("/api/price/",priceRoute);
 //! route for product
 const productRoute =require("./route/product");
 app.use("/api/product/",productRoute);
+//!route for the signup
+const userRoute = require("./route/user");
+app.use("api/user/",userRoute)
 
 //!connecting to mongodb
 mongoose.connect(process.env.DB_STRINGS,{useNewurlParser : true});
 mongoose.connection
 .once("open", ()=>console.log("connected to MongoDB DataBase is connected........"))
-.on("error",(err)=>{console.log(`Not  connecting to mongoDB ${err}`)})
+.on("error",(err)=>{console.log(`Not  connecting to mongoDB DataBase it might be the network issues to try check the internet connection ${err}`)})
 
 
 app.listen(1609,()=>{

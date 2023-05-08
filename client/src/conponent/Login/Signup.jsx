@@ -62,6 +62,12 @@ theme="colored"
                           <BiLock/>
                     </span>
               </div>
+              <div className='textbox'>
+                   <input type="password" name="" placeholder='Comfirm Password' id="" />
+                    <span className='material-symbols-outline'>
+                          <BiLock/>
+                    </span>
+              </div>
               <button type="submit" onChange={notify}>Create account</button>            
               
               <a href="http://" target="_blank" rel="noopener noreferrer">Don't have an account yet</a>
