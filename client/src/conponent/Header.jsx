@@ -1,14 +1,14 @@
 import React from 'react';
 import {FaCrown}from 'react-icons/fa';
-import profile from './Login/profile.jpg'
+import profile from '../asset/profile.jpg'
 import {useNavigate, NavLink} from 'react-router-dom';
 const Header = () => {
   return (
     <header className="flex items-center w-full mb-6 md:py-2 justify-between   shadow-2xl shadow-cyan-500/50   md:px-0 bg-primary">
       
           <div className='flex  mx-3'>
-                  <img src={profile} className=' w-12 h-12 min-w[44px] object-cover mt-4  shadow-lg' alt="user-pic" />  
-              <h1 className='py-3 text-textColor'>IBOYTECH STORE</h1>
+                  <img src={profile} className=' w-10 h-10 min-w[44px] object-cover mt-4  shadow-lg' alt="user-pic" />  
+              <h1 className='py-3 px-0 text-2xl text-textColor'>IBOYTECH STORE</h1>
           </div>
             <div className='flex flex-col'>
                

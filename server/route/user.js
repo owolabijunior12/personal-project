@@ -34,15 +34,13 @@ router.post("/signin",async(res,req,next)=>{
         const {email, password} = req.body;
         if(!email || !password){       
             return  next(new ErrorResponse('E-mail and password are required', 400))
-        }
-        // check user e-mail
+        }      
         const user = await User.findOne({email});
         if(!user){           
             return  next(new ErrorResponse('Invalid credentials', 400))
         }       
         const isMatched = await user.comparePassword(password);
         if (!isMatched){
-         
           return  next(new ErrorResponse('Invalid credentials', 400))
         }    
     }

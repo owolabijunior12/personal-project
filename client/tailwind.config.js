@@ -39,6 +39,7 @@ export const theme = {
       620: "620px",
     },
     colors: {
+    none:"display:none",
       headingColor: "#524646",
       textColor: "#dfb56b",
       cartNumBg: "#e80013",

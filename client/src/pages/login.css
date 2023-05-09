@@ -2,11 +2,6 @@
     box-sizing: border-box;
   }
   
-
-  .body,
-  .wrapper {
-    height: 100%;
-  }
   
   @keyframes gradient {
     100% {
@@ -14,7 +9,7 @@
     }
   }
   
-  .login {
+  .body {
     display: grid;
     place-items: center;
     margin: 0;
@@ -150,7 +145,7 @@
     color: #157ae1;
   }
   
-  .login-form button {
+  .login-form button, .div {
     cursor: pointer;
     background: #00b521;
     color: #f9f9f9;

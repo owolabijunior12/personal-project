@@ -40,11 +40,7 @@ const productSchema = mongoose.Schema(
         product_weight: {
             type: String,
             require: true,
-        },
-        product_weight: {
-            type: String,
-            require: true,
-        },
+        },       
         
     },
     {timestamps:true}

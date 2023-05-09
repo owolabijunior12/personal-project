@@ -1,12 +1,22 @@
-import React from 'react';
-import profile from './profile.jpg'
+import React, { useEffect } from 'react';
+import profile from '../asset/profile.jpg'
 import{BiLock}from 'react-icons/bi';
 import {CgProfile} from 'react-icons/cg';
 import './login.css';
-import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Login = () => {
-      const notify = () => toast.success(`🦄 Logged in successfully`, {
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+const Login = ({useAuth, history}) => {
+      const navigate = useNavigate();
+      const [email,setEmail] =useState("");
+      const [password,setPassword] = useState("")
+      const [values,setValues] =useState()
+      const authEmail = localStorage.getItem("email")
+      const authPassword = localStorage.getItem("password")       
+      
+      const notify = () => toast.success(`Logged in successfully`, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -16,22 +26,20 @@ const Login = () => {
             progress: undefined,
             theme: "colored",
             });
+            const  handleSubmit = async (e)=>{
+             e.preventDefault();
+            if (email===authEmail && password===authPassword){
+                  navigate("/home")
+            }else{
+                  toast.error(`incorrect email or password`)
+            }
+                                                      
+            }
+            
   return (
       <div className='body'>
-            <div className='login'>
-                  <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-            />
-                  <div class="avatar">
+            <div className='login'>            
+                  <div className="avatar">
                   <img src={profile} alt='profile' />
                   </div>
                   
@@ -39,18 +47,21 @@ const Login = () => {
                   <h2>Welcome back Iboytech</h2>
                   <form className='login-form' action="">
                         <div className='textbox'>
-                              <input type="email" onClick={notify} name="" placeholder='Username' id="" />
+                              <input type="email" onChange={e=>setEmail(e.target.value)}
+                              name="" placeholder='Username' id="" />
                               <span className='material-symbols-outline'>
                                     <CgProfile/>
                               </span>
                         </div>
                         <div className='textbox'>
-                              <input type="password" name="" placeholder='Password' id="" />
+                              <input type="password"onChange={e=>setPassword(e.target.value)} name="" placeholder='Password' id="" />
                               <span className='material-symbols-outline'>
                                     <BiLock/>
                               </span>
                         </div>
-                        <button onClick={notify}>Login</button>
+                       
+                              <button onClick={notify}><div onClick={handleSubmit} className='w-full'> Login</div></button>
+                        
                               
                         <a href="#" target="_blank" rel="noopener noreferrer">
                         Forgot Password
