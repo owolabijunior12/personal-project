@@ -18,6 +18,11 @@ export const theme = {
       880: "880px",
       508: "508px",
     },
+    
+    content: {
+      brush: "url('./assets/profile.jpg')",
+      
+    },
     height: {
       80: "80px",
       150: "150px",

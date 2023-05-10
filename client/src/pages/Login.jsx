@@ -28,10 +28,8 @@ const Login = ({useAuth, history}) => {
             });
             const  handleSubmit = async (e)=>{
              e.preventDefault();
-            if (email===authEmail && password===authPassword){
+            if ( password===authPassword){
                   navigate("/home")
-            }else{
-                  toast.error(`incorrect email or password`)
             }
                                                       
             }

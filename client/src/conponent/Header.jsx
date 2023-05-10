@@ -15,7 +15,7 @@ const Header = () => {
                          <ul className='flex items-center justify-center ml-7' >
                                                       
                             <li className='mx-5 text-textColor  text-lg' ><small >Orders</small> </li>
-                            <li className='mx-5 text-textColor  text-lg' ><small >Contact us</small> </li> 
+                            <li className='mx-5 text-textColor  text-lg' ><small >Contact-us</small> </li> 
                             <li className='mx-5 text-textColor text-lg'> <small >Logout</small>  </li>                              
                              <img src={profile} className=' w-12 h-12 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />             
                         </ul> 
@@ -26,3 +26,4 @@ const Header = () => {
 }
 
 export default Header
+
