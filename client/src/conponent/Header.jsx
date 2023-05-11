@@ -1,29 +1,28 @@
 import React from 'react';
 import {FaCrown}from 'react-icons/fa';
-import profile from '../asset/profile.jpg'
+import profile from '../asset/profile.jpg';
+import {AiOutlineShopping} from "react-icons/ai"
+import {FiLogOut} from "react-icons/fi"
 import {useNavigate, Link, useLocation} from 'react-router-dom';
 const Header = () => {
   const {search} = useLocation;
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
+  // const logOutHandler = ()=>{
+     
+  // }
+
   return (
     <header className="flex items-center w-full mb-6 md:py-2 justify-between   shadow-2xl shadow-cyan-500/50   md:px-0 bg-primary">
-      
-          <div className='flex  mx-3'>
-                  <img src={profile} className=' w-10 h-10 min-w[44px] object-cover mt-4  shadow-lg' alt="user-pic" />  
+           <div className='flex '>                 
               <h1 className='py-3 px-0 text-2xl text-textColor'>IBOYTECH STORE</h1>
           </div>
-            <div className='flex flex-col'>
-               
-                         <ul className='flex items-center justify-center ml-7' >
-                                                      
-                            <li className='mx-5 text-textColor  text-lg' ><small >Orders</small> </li>
-                            <li className='mx-5 text-textColor  text-lg' ><small >Contact-us</small> </li> 
-                            <li className='mx-5 text-textColor text-lg'> <small >   <Link to={`/login?redirect=${redirect}`}>LogOut</Link></small>  </li>                              
-                             <img src={profile} className=' w-12 h-12 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />             
-                        </ul> 
-                        
-                  </div>            
+                <div className='relative scale-75 flex '>      
+                <span className='absolute -top-3 left-9 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>4</span>                                   
+                    <p className='mx-5 text-textColor text-4xl'> <small > <AiOutlineShopping/></small>  </p>                                                  
+                    <p className='mx-5 text-textColor text-4xl'><small><Link to={`/login?redirect=${redirect}`}><FiLogOut values="LogOut" /></Link></small>  </p>                                                  
+                    
+                </div>                                      
     </header>
   )
 }
