@@ -17,13 +17,7 @@ const HomeScreen = (product) => {
        <Banner/>
        <div className='text-4xl text-center bg-black text-textColor'>Accessories</div>  
         <Product  key={product.id}/>
-          <Footer/>
-        <Routes>
-              <Route path="/signup" element={<Signup />} />          
-              <Route path="/shoppingCart" element={<ShoppingCart />} />
-              {/* <Route path="/Home" element={<HomeScreen />} /> */}
-              <Route path="/checkout"     element={<CheckOut/>} />
-        </Routes>
+        <Footer/>     
      </div>
   )
 }

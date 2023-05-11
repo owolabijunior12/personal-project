@@ -34,6 +34,9 @@ function App() {
                   <Routes>          
                     <Route path='/login' element={<Login setAuth={auth}/>} />
                     <Route  path='/*'  element={<HomeScreen/>} />
+                    <Route path="/shoppingCart" element={<ShoppingCart />} />
+                      <Route path="/checkout"     element={<CheckOut/>} />
+                      <Route path="/signup" element={<Signup />} />  
                   </Routes>
                   
             </div>                    

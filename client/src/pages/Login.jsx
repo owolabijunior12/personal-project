@@ -7,7 +7,7 @@ import axios from "axios";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate,Link } from 'react-router-dom';
 const Login = ({useAuth, history}) => {
       const navigate = useNavigate();
       const [email,setEmail] =useState("");
@@ -33,6 +33,10 @@ const Login = ({useAuth, history}) => {
             }
                                                       
             }
+
+            const {search} = useLocation();
+            const redirectInUrl = new URLSearchParams(search).get('redirect');
+            const redirect = redirectInUrl ? redirectInUrl : '/';
             
   return (
       <div className='body'>
@@ -65,6 +69,7 @@ const Login = ({useAuth, history}) => {
                         Forgot Password
                         </a>
                         <a href="http://" target="_blank" rel="noopener noreferrer">Don't have an account yet</a>
+                        <Link to={`/signup?redirect=${redirect}`}>SignUp</Link>
                   </form>
                   
             </div>

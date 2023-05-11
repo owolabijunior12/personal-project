@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import{BiLock}from 'react-icons/bi';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {FcGoogle} from "react-icons/fc"
 import {CgProfile} from 'react-icons/cg';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,6 +9,7 @@ import {MdOutlineAlternateEmail,MdOutlineDriveFileRenameOutline} from 'react-ico
 import './login.css'
 const SignUp = () => {
       const {search} =useLocation();
+      const navigate =useNavigate();
       const redirectInUrl = new URLSearchParams(search).get('redirect');
       const redirect = redirectInUrl ? redirectInUrl : '/';
       const [usernmae,setUsername] = useState("");
@@ -33,7 +34,7 @@ const SignUp = () => {
                   localStorage.setItem("email", email);
                   localStorage.setItem("password", password);
                   localStorage.setItem("comfirmPassword",comfirmPassword);
-
+                  navigate("/home")
             }
   return (
     <div className='login text-white'>
@@ -87,7 +88,7 @@ const SignUp = () => {
               <button type="submit" onChange={notify}><div onClick={handleSubmit} className='w-full '> Create account</div></button>            
               
               <a href="http://" target="_blank" rel="noopener noreferrer">Don't have an account yet</a>
-              <Link to={`/signup?redirect=${redirect}`}>Sign-In</Link>
+              <Link to={`/login?redirect=${redirect}`}>Sign-In</Link>
          </form>
   </div>
   )
