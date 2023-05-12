@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {AiOutlineInstagram, AiOutlineTwitter,AiFillLinkedin} from 'react-icons/ai'
+import { FaFacebookSquare } from 'react-icons/fa';
 const Footer = () => {
   const {search} =useLocation();  
   const redirectInUrl = new URLSearchParams(search).get('redirect');
@@ -14,15 +16,27 @@ const Footer = () => {
               <ul >
                   <li  className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Our Policy</Link></li>
                     <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>About Us</Link></li>
-                  <li   className=' py-3 text-xl'><Link to={`/Help?redirect=${redirect}`}>Help</Link></li>
-                   <li  className=' py-3 text-xl'><Link to={`/contact-us?redirect=${redirect}`}>Contact-us</Link></li>
+                    <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>Why Choose Us</Link></li>
+                  <li   className=' py-3 text-xl'><Link to={`/Help?redirect=${redirect}`}>FAQs</Link></li>
+                   <li  className=' py-3 text-xl'><Link to={`/contact-us?redirect=${redirect}`}>Partner With Us</Link></li>                   
               </ul>
               <ul>
-                  <li className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Our Policy</Link></li>
-                    <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>About Us</Link></li>
-                  <li  className=' py-3 text-xl'><Link to={`/Help?redirect=${redirect}`}>Help</Link></li>
+                
+                  <li className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Support</Link></li>
+                  <li className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Download</Link></li>
+                  <li className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Privacy Policy</Link></li>
+                    <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>Help Center</Link></li>                  
                    <li  className=' py-3 text-xl'><Link to={`/contact-us?redirect=${redirect}`}>Contact-us</Link></li>
               </ul>
+        </div>
+        <div className=' flex flex-col justify-center items-center'>
+            <h2>Follow us</h2>
+            <div className='flex'>
+                <AiOutlineInstagram className='text-textColor m-1 text-2xl'/>
+                <AiOutlineTwitter className='text-textColor m-1 text-2xl'/>
+                <FaFacebookSquare className='text-textColor m-1 text-2xl'/>
+                <AiFillLinkedin className='text-textColor m-1 text-2xl'/>
+            </div>
         </div>
         <i> © 2023 Copyright: <a href="#" target="_blank" rel="noopener noreferrer">Iboytech Store</a></i>
         <i>All Right Reserved </i>               
