@@ -15,6 +15,7 @@ const Footer = () => {
         <div className='flex flex-wrap my-8 justify-evenly w-full'>
               <ul >
                   <li  className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Our Policy</Link></li>
+                  <li  className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Become A Seller</Link></li>
                     <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>About Us</Link></li>
                     <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>Why Choose Us</Link></li>
                   <li   className=' py-3 text-xl'><Link to={`/Help?redirect=${redirect}`}>FAQs</Link></li>
@@ -26,6 +27,7 @@ const Footer = () => {
                   <li className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Download</Link></li>
                   <li className=' py-3 text-xl'><Link to={`/policy?redirect=${redirect}`}>Privacy Policy</Link></li>
                     <li  className=' py-3 text-xl'><Link to={`/about-us?redirect=${redirect}`}>Help Center</Link></li>                  
+                   <li  className=' py-3 text-xl'><Link to={`/contact-us?redirect=${redirect}`}>Term & Conditions</Link></li>
                    <li  className=' py-3 text-xl'><Link to={`/contact-us?redirect=${redirect}`}>Contact-us</Link></li>
               </ul>
         </div>
