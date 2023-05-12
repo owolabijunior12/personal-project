@@ -62,15 +62,14 @@ const Product = () => {
                />
              </div>                   
              <p className="text-base items-center text-textColor font-semibold my-2">
-                   Product Name:
+                   
                    <span className=" text-sm text-textColor my-1"> {product.product_name}</span>
                </p>
                <p className="text-base text-textColor items-center font-semibold ">
-                 Price: 
+                 
                  <span className=" text-sm text-textColor my-1"> ${product.product_price} </span>
                </p>            
-               <p className="text-base text-textColor items-center font-semibold ">
-                 Status: 
+               <p className="text-base text-textColor items-center font-semibold ">                 
                  <span className=" text-sm text-textColor my-1"> {product.product_status} </span>
                </p>
 
@@ -136,15 +135,15 @@ const Product = () => {
                           />
                         </div>                   
                         <p className="text-base items-center text-textColor font-semibold my-2">
-                              Product Name:
+                              
                               <span className=" text-sm text-textColor my-1"> {product.product_name}</span>
                           </p>
                           <p className="text-base text-textColor items-center font-semibold ">
-                            Price: 
+                             
                             <span className=" text-sm text-textColor my-1"> ${product.product_price} </span>
                           </p>            
                           <p className="text-base text-textColor items-center font-semibold ">
-                            Status: 
+                            
                             <span className=" text-sm text-textColor my-1"> {product.product_status} </span>
                           </p>
             
@@ -216,15 +215,15 @@ const Product = () => {
                           />
                         </div>                   
                         <p className="text-base items-center text-textColor font-semibold my-2">
-                              Product Name:
+                              
                               <span className=" text-sm text-textColor my-1"> {product.product_name}</span>
                           </p>
                           <p className="text-base text-textColor items-center font-semibold ">
-                            Price: 
+                          
                             <span className=" text-sm text-textColor my-1"> ${product.product_price} </span>
                           </p>            
                           <p className="text-base text-textColor items-center font-semibold ">
-                            Status: 
+                           
                             <span className=" text-sm text-textColor my-1"> {product.product_status} </span>
                           </p>
             
