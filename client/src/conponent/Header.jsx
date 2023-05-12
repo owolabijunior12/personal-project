@@ -20,7 +20,7 @@ const Header = () => {
               </Link>
           </div>
                 <div className='relative scale-75 flex '>      
-                <span className='absolute -top-3 left-9 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>4</span>                                   
+                <span className='absolute -top-3 left-9 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>0</span>                                   
                     <p className='mx-5 text-textColor text-4xl'> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p>                                                  
                     <p className='mx-5 text-textColor text-4xl'><small><Link to={`/login?redirect=${redirect}`}><FiLogOut values="LogOut" /></Link></small>  </p>                                                  
                     
