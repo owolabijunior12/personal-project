@@ -28,8 +28,15 @@ const Login = ({useAuth, history}) => {
             });
             const  handleSubmit = async (e)=>{
              e.preventDefault();
-            if ( password===authPassword){
-                  navigate("/home")
+
+
+
+            if ( password===authPassword && email===authEmail ){                  
+                  navigate("/home");
+                  toast.success("Logged in successfully")
+            }else{
+                  navigate("/login");
+                  toast.error("usernme or password is incorrect")
             }
                                                       
             }
@@ -62,7 +69,7 @@ const Login = ({useAuth, history}) => {
                               </span>
                         </div>
                        
-                              <button onClick={notify}><div onClick={handleSubmit} className='w-full'> Login</div></button>
+                              <button onClick={handleSubmit}> Login</button>
                         
                               
                         <a href="#" target="_blank" rel="noopener noreferrer">

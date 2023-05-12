@@ -1,9 +1,10 @@
 import React from 'react'
-
+import  Header from "../conponent/Header"
 const ShoppingCart = () => {
   return (
-    <div>
-      ShoppingCart
+    <div className='w-full'>
+      <Header />
+      
     </div>
   )
 }

@@ -23,7 +23,7 @@
   }
   
   @media (width >= 500px) {
-    body {
+    .body {
       padding: 0;
     }
   }

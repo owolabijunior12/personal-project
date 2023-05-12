@@ -20,7 +20,7 @@ function App() {
     <div className='min-w-[300px] h-auto  '>       
            <ToastContainer
             position="top-right"
-            autoClose={1000}
+            autoClose={9000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

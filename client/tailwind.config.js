@@ -26,6 +26,7 @@ export const theme = {
     height: {
       80: "80px",
       150: "150px",
+      175:"209px",
       225: "225px",
       300: "300px",
       340: "340px",
