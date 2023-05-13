@@ -1,52 +1,82 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../model/signup");
+// const jwt = require("jsonwebtoken");
 
-router.post("/save", async (req,res)=>{
+router.post("/save", async (req, res) => {
     try {
-        const newUser =await User.create({
-            name:res.body.name,
-            username:res.body.username,
-            email:res.body.email,
-            password:res.body.password,
-            role:res.body.role
+        const newUser = await User.create({
+            name: req.body.name,
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
         });
-        res.status(200).json({success:true,user:newUser});
+        res.status(200).json({success: true, user: newUser});
     } catch (error) {
         console.log(error);
-        res.status(400).json({error:"fail to save new user"});
+        res.status(400).json({error: "Failed to save new user"});
     }
-})
-router.get("/logout", (res,req,next)=>{
+});
+
+router.get("/logout", (req, res, next) => {
     res.clearCookie("token");
-    res.status(200).json({success:true, message:"logout successfully"})
-})
-router.get("/singleUser",async (res,req,next)=>{
-     try {
-        const user = await User.findById(req.params.id);
-        res.status(200).json({sucess: true,  user })        
+    res.status(200).json({success: true, message: "Logout successful"});
+});
+
+router.get('/getUser', async (req, res) => {
+    try {
+        const options = {
+            sort: { createdAt: 1 }
+        };
+        const users = await User.find({}, null, options);
+        if (users.length > 0) {
+            res.status(200).send({ success: true, users });
+        } else {
+            res.status(200).send({ success: true, msg: 'No Data Found' });
+        }
     } catch (error) {
-        next(error)        
+        console.log(error);
+        res.status(500).send({ success: false, msg: 'Internal Server Error' });
     }
-})
-router.post("/signin",async(res,req,next)=>{
-    try{
+});
+
+router.get("/singleUser/:id", async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.status(200).json({success: true, user});
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/signin", async (req, res, next) => {
+    try {
         const {email, password} = req.body;
-        if(!email || !password){       
-            return  next(new ErrorResponse('E-mail and password are required', 400))
-        }      
+        if (!email || !password) {
+            return next(new Error("Email and password are required"));
+        }
         const user = await User.findOne({email});
-        if(!user){           
-            return  next(new ErrorResponse('Invalid credentials', 400))
-        }       
+        if (!user) {
+            return next(new Error("Invalid credentials"));
+        }
         const isMatched = await user.comparePassword(password);
-        if (!isMatched){
-          return  next(new ErrorResponse('Invalid credentials', 400))
-        }    
+        if (!isMatched) {
+            return next(new Error("Invalid credentials"));
+        }
+        const token = await createToken(user);
+        res.cookie("token", token, {httpOnly: true});
+        res.status(200).json({success: true, user: user._id});
+    } catch (error) {
+        console.log(error);
+        next(new Error("Cannot log in, check your credentials"));
     }
-    catch(error){
-        console.log(error);       
-        next(new ErrorResponse('Cannot log in, check your credentials', 400))
-    }
-})
+});
+
 module.exports = router;
+
+// async function createToken(user) {
+//     const payload = {userId: user._id};
+//     const secret = process.env.JWT_SECRET || "mysecret";
+//     const options = {expiresIn: "1d"};
+//     return jwt.sign(payload, secret, options);
+// }

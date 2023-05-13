@@ -23,6 +23,7 @@ const Product = () => {
                product_status:"out of stock"
              },
              {
+
                 id:3,
                product_name: "Nike Air Force 7",
                product_price: 929.99,
@@ -52,7 +53,7 @@ const Product = () => {
 
            ].map((product)=>
        
-           <div className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
+           <div onClick="" className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
              <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                <img
                  whileHover={{ scale: 1.05 }}

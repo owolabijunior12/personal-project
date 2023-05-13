@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from "./pages/Login"
 import CheckOut from './pages/Checkout'
 import ShoppingCart from './pages/ShoppingCart'
+import ProductDetails  from './pages/ProductDetails'
 import HomeScreen from './conponent/HomeScreen'
 function App() {
   const nagivate = useNavigate();
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/shoppingCart" element={<ShoppingCart />} />
                       <Route path="/checkout"     element={<CheckOut/>} />
                       <Route path="/signup" element={<Signup />} />  
+                      <Route path="/signup" element={<ProductDetails  />} />  
                   </Routes>
                   
             </div>                    

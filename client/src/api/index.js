@@ -1,13 +1,15 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:1609/";
-    console.log(`${baseURL}api/artist/getAll`);
+export const baseURL = "http://localhost:1609/";
+    console.log(`${baseURL}api/product/getAll`);
 
 
 export const Signin = async () => {
   try {
-    const res = await axios.get(`${baseURL}api/user/signin`);
-    return res.data;
+    const siginData = await axios.get(`${baseURL}api/user/signin`,{
+
+    });
+    return siginData.data;
 
   } catch (error) {
     return null;

@@ -38,7 +38,7 @@ router.get("/getOne/:id", async (req, res, next) => {
     next(error);
   }
 });
-router.put("/update/id",async(req,res)=>{
+router.put("/update/id",async(req,res,next)=>{
     try {
         const {name,product_price,imageURL,description,quantity,catagorty}=res.body;
         const product =await product.findByIdAndUpdate(res.params.id);
@@ -65,7 +65,7 @@ router.delete("/delete/:id",async(res,req)=>{
 router.get("/getAll",async (res,req)=>{
     try {
         const product = await Product.find().sort({createdAt:1});
-        res.statue(200).json({success:true, product});
+        res.status(200).json({success:true, product});
     } catch (error) {
         console.log(error);
         next(error)
