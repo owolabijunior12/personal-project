@@ -11,14 +11,14 @@ const Product = () => {
   // const redirect = redirectInUrl ? redirectInUrl : '/';
   return (
     <div className='flex flex-col justify-center items-center'>
-       <div className='text-4xl text-center w-full bg-primary text-textColor'>Accessories</div>
+       <div className='text-4xl text-center w-full bg-black text-textColor'>Accessories</div>
        {/* <Link to={`/product-details/${productData.indexOf}`}> */}
        <div  className='flex flex-wrap'>
                     
                     { productData?.map(({product_image,product_name,product_price,product_status})=>
                       <Link to={`/product-details/`}>
         
-                          <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
+                          <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
         
                             <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                               <img
@@ -45,14 +45,14 @@ const Product = () => {
                           )}      
                         </div>
          
-        {/* <div className='text-4xl text-center w-full bg-primary text-textColor'>Toiletries</div>
+        {/* <div className='text-4xl text-center w-full bg-black text-textColor'>Toiletries</div>
         <Link to={`/product-details/`}> */}
               <div  className='flex flex-wrap'>
                     
             { productData?.map(({product_image,product_name,product_price,product_status})=>
               <Link to={`/product-details/`}>
 
-                  <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
+                  <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
 
                     <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                       <img
@@ -79,13 +79,13 @@ const Product = () => {
                   )}      
                 </div>
       
-          <div className='text-4xl text-center w-full bg-primary text-textColor' id='#electronic'>Electronic</div>
+          <div className='text-4xl text-center w-full bg-black text-textColor' id='#electronic'>Electronic</div>
           <div  className='flex flex-wrap'>
                     
                     { productData?.map(({product_image,product_name,product_price,product_status})=>
                       <Link to={`/product-details/`}>
         
-                          <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
+                          <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
         
                             <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                               <img

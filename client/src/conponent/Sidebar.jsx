@@ -11,15 +11,13 @@ const Sidebar = () => {
   const redirect = redirectInUrl ? redirectInUrl : '/';
   const userInfo= localStorage.getItem("fullname")
   return (
-    <div className='w-[200px] mt-28'>
+    <div className='w-auto mt-28'>
           <div className="fixed left-0 text-white bottom-0 h-full bg-black w-[300px] ">
             {/* <HiMenu className=' text-4xl  lg:hidden text-white '/>    */}
           
           <div className="flex bg-black justify-between px-4 py-4">            
           <Link to={'/'}>
-              <h1 className='py-3 px-2 text-2xl text-textColor'>IBOYTECH STORE</h1>
-              <p className="text-textColor">{new Date().getHours()} : {new Date().getMinutes}:{new Date().getSeconds} </p>
-              <p> {new Date().getDate()} </p>  
+              <h1 className='py-3 px-2 text-2xl text-textColor'>IBOYTECH STORE</h1>           
         </Link>
             <button>
               {/* <AiFillCloseCircle className='text-2xl text-red-500'/> */}
@@ -41,12 +39,7 @@ const Sidebar = () => {
                         </Link>         
                           
                        <p  className='mx-5 my-2 text-textColor text-4xl'><small><Link to={`/login?redirect=${redirect}`}><FiLogOut values="LogOut" /></Link></small>  </p>
-                 </div>
-                <div>
-                    <p>Profile</p>
-                    <p>Orders</p>
-                    <p>Transaction</p>
-                </div>
+                 </div>                
             <div className="flex flex-col">
                   <h1 className='text-4xl pb-2 capitalize'>Categorys</h1>
                   {filters.map(({name})=>

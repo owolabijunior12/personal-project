@@ -30,8 +30,7 @@ const Header = () => {
    
         <Link to={'/'}>
               <h1 className='  text-2xl px-7 text-textColor'>IBOYTECH STORE</h1>
-              <p className="text-textColor">{new Date().getHours()} : {new Date().getMinutes}:{new Date().getSeconds} </p>
-              <p> {new Date().getDate()} </p>          
+                      
         </Link>
              
       {isDesktop ? (
@@ -58,9 +57,7 @@ const Header = () => {
           
           <div className="flex bg-black justify-between px-4 py-4">            
           <Link to={'/'}>
-              <h1 className='py-3 px-2 text-2xl text-textColor'>IBOYTECH STORE</h1>
-              <p className="text-textColor">{new Date().getHours()} : {new Date().getMinutes}:{new Date().getSeconds} </p>
-              <p> {new Date().getDate()} </p>  
+              <h1 className='py-3 px-2 text-2xl text-textColor'>IBOYTECH STORE</h1>              
         </Link>
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
               <AiFillCloseCircle className='text-2xl text-red-500'/>
