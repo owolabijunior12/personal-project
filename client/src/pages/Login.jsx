@@ -14,6 +14,7 @@ const Login = ({useAuth, history}) => {
       const [password,setPassword] = useState("")
       const [values,setValues] =useState()
       const authEmail = localStorage.getItem("email")
+      const authUsername = localStorage.getItem("username")
       const authPassword = localStorage.getItem("password")       
       
       const notify = () => toast.success(`Logged in successfully`, {
@@ -31,7 +32,7 @@ const Login = ({useAuth, history}) => {
 
 
 
-            if ( password===authPassword && email===authEmail ){                  
+            if ( password===authPassword && email===authEmail  ){                  
                   navigate("/home");
                   toast.success("Logged in successfully")
             }else{
@@ -57,7 +58,7 @@ const Login = ({useAuth, history}) => {
                   <form className='login-form' action="">
                         <div className='textbox'>
                               <input type="email" onChange={e=>setEmail(e.target.value)}
-                              name="" placeholder='Username' id="" />
+                              name="" placeholder='Email' id="" />
                               <span className='material-symbols-outline'>
                                     <CgProfile/>
                               </span>

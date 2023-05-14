@@ -19,16 +19,16 @@ const SignUp = () => {
       const [password, setPassword] = useState("");
 
      
-      const notify = () => toast.success(`🦄 Logged in successfully`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            });
+      // const notify = () => toast.success(`🦄 Logged in successfully`, {
+      //       position: "top-right",
+      //       autoClose: 5000,
+      //       hideProgressBar: false,
+      //       closeOnClick: true,
+      //       pauseOnHover: true,
+      //       draggable: true,
+      //       progress: undefined,
+      //       theme: "colored",
+      //       });
           
            
       const handleSubmit = (e) => {
@@ -47,8 +47,11 @@ const SignUp = () => {
                   password:password,
                   role:"member"
             }   
-            localStorage.setItem("userData",data)
-            // localStorage.setItem("comfirmPassword",comfirmPassword);
+            localStorage.setItem("userdata",data);
+            localStorage.setItem("username", username);
+            localStorage.setItem("fullname", fullname);
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);                  
             toast.success("successfully ")
             Signup(data);
             setTimeout(() => {

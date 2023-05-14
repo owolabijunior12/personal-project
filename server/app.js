@@ -23,7 +23,7 @@ app.use("/api/user/",userRoute);
 try {
     mongoose.connect(process.env.DB_STRINGS, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        // useUnifiedTopology: true
     });
     console.log("Connected to MongoDB database...");
 } catch (error) {

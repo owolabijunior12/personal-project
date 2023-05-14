@@ -1,4 +1,5 @@
 import React from 'react'
+import { FiKey } from 'react-icons/fi'
 
 const Catagory = () => {
   return (
@@ -8,37 +9,35 @@ const Catagory = () => {
            {
         [
             {
+                id:1,
                 brand:"Nike",
                 color:"black"
             },
             {
+                id:2,
                 brand:"Nike",
                 color:"black"
             },
             {
+                id:3,
                 brand:"Nike",
                 color:"black"
             },
             {
+               id:4,
                 brand:"Nike",
                 color:"black"
             },
             {
+                id:5,
                 brand:"Nike",
                 color:"black"
             },
-            {
-          
-            },
-            {
-          
-            },
-            {
-          
-            },
+       
            
-        ].map((Catagory)=>        
-                <p className='m-2 w-auto rounded-xl h-auto text-center bg-textColor  p-4'>{Catagory.brand} </p>            
+        ]?.map((Catagory)=> 
+            
+                <p className='m-2 w-auto rounded-xl h-auto text-center bg-textColor  p-4'>{Catagory.brand}{FiKey} </p>            
         )
       }
       </div>
