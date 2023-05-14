@@ -17,6 +17,8 @@ router.post("/save", async (req, res) => {
         product_weight: req.body.product_weight,
         product_quantity: req.body.product_quantity,
         product_status: req.body.product_status,
+        product_model_number: req.body. product_model_number,
+        product_serial_number:req.body.product_serial_number
       });
       res.status(200).send({ success: true, product: newProduct });
     } catch (error) {

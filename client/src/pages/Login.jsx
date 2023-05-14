@@ -3,18 +3,18 @@ import profile from '../asset/profile.jpg'
 import{BiLock}from 'react-icons/bi';
 import {CgProfile} from 'react-icons/cg';
 import './login.css';
-import axios from "axios";
+// import axios from "axios";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { useLocation, useNavigate,Link } from 'react-router-dom';
-const Login = ({useAuth, history}) => {
+const Login = ({useAuth, history,setAuth}) => {
       const navigate = useNavigate();
       const [email,setEmail] =useState("");
       const [password,setPassword] = useState("")
-      const [values,setValues] =useState()
+      // const [values,setValues] =useState()
       const authEmail = localStorage.getItem("email")
-      const authUsername = localStorage.getItem("username")
+      // const authUsername = localStorage.getItem("username")
       const authPassword = localStorage.getItem("password")       
       
       const notify = () => toast.success(`Logged in successfully`, {
@@ -35,6 +35,7 @@ const Login = ({useAuth, history}) => {
             if ( password===authPassword && email===authEmail  ){                  
                   navigate("/home");
                   toast.success("Logged in successfully")
+                  window.localStorage.setItem("auth", "true");
             }else{
                   navigate("/login");
                   toast.error("usernme or password is incorrect")
@@ -46,15 +47,16 @@ const Login = ({useAuth, history}) => {
             const redirectInUrl = new URLSearchParams(search).get('redirect');
             const redirect = redirectInUrl ? redirectInUrl : '/';
             
+            const userInfo= localStorage.getItem("fullname")
   return (
       <div className='body'>
             <div className='login'>            
                   <div className="avatar">
                   <img src={profile} alt='profile' />
                   </div>
-                  
+           
                   <h2>Login</h2>
-                  <h2>Welcome back Iboytech</h2>
+                  <h2>Welcome back {userInfo?.length >9?userInfo.slice(0,10):userInfo}.... </h2>
                   <form className='login-form' action="">
                         <div className='textbox'>
                               <input type="email" onChange={e=>setEmail(e.target.value)}

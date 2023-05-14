@@ -4,7 +4,7 @@ import { FiKey } from 'react-icons/fi'
 const Catagory = () => {
   return (
     <div className='w-full  h-auto'>
-      <div className='text-4xl px-3 w-full bg-black text-textColor'>Brands</div>
+      <div className='text-4xl px-3 w-full bg-primary text-textColor'>Brands</div>
       <div className=' flex flex-wrap '>
            {
         [

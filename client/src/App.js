@@ -9,12 +9,18 @@ import CheckOut from './pages/Checkout'
 import ShoppingCart from './pages/ShoppingCart'
 import ProductDetails  from './pages/ProductDetails'
 import HomeScreen from './conponent/HomeScreen'
+import UserProfile from './pages/UserProfile';
 function App() {
   const nagivate = useNavigate();
   const [auth,setAuth] = useState(false || window.localStorage.getItem("auth")===true);
   useEffect(()=>{    
-    window.localStorage.setItem("auth", false);
-    nagivate("./login");
+    const authLogin =localStorage.getItem("auth")
+    if(authLogin === false){
+       nagivate("./login");
+    }else{
+      nagivate("/");
+    }
+   
   },[])
 
   return (
@@ -33,12 +39,13 @@ function App() {
             />
         <div className='min-w-[300px] h-auto  flex justify-center items-center'>       
                   <Routes>          
-                    <Route path='/login' element={<Login setAuth={auth}/>} />
+                  <Route path='/Login' element={<Login setAuth={setAuth}/>} />
                     <Route  path='/*'  element={<HomeScreen/>} />
                     <Route path="/shoppingCart" element={<ShoppingCart />} />
                       <Route path="/checkout"     element={<CheckOut/>} />
                       <Route path="/signup" element={<Signup />} />  
-                      <Route path="/signup" element={<ProductDetails  />} />  
+                      <Route path="/product-details" element={<ProductDetails  />} />  
+                      <Route path="/user-profile" element={<UserProfile  />} />  
                   </Routes>
                   
             </div>                    

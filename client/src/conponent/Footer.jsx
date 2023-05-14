@@ -7,7 +7,7 @@ const Footer = () => {
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
   return (
-    <i className='bg-black h-auto py-6 px-2  text-textColor flex flex-col justify-center items-center text-sm'>
+    <i className='bg-primary h-auto py-6 px-2  text-textColor flex flex-col justify-center items-center text-sm'>
         <div className='  text-center text-2xl'>
                
                 <p>Welcome to our Iboytech store that specializes in selling used products! Our platform is designed to provide a convenient and affordable way for customers to buy and sell pre-owned items.</p>

@@ -1,45 +1,96 @@
 import profile from "../asset/profile.jpg"
+export const image = profile
 export const productData=[
     {
-       id: 1,
+      id: 1,
       product_name: "Nike Air Force1",
       product_price: 99.43,
       product_image: profile,
-      product_status:"Availaible"
+      product_status:"Availaible",  
+      imageURL: profile,
+      description: " One of the best sneaker in world that helps you walk miles comfortably ",
+      category: "CLOTHES & FOOTWEAR",
+      brand: "Nike",
+      product_type: "New",
+      product_size: 343.32,
+      product_color: ["green", "red", "White", "black"],
+      product_weight: 12,
+      product_quantity: 5,   
+      product_model_number:  "0942022me32",
+      product_serial_number:"M93468V3983232"
     },
     {
-       id: 2,
-      product_name: "Nike Air Force 2",
-      product_price: 29.65,
+      id: 2,
+      product_name: "Nike Air Force1",
+      product_price: 99.43,
       product_image: profile,
-      product_status:"out of stock"
+      product_status:"Availaible",  
+      imageURL: profile,
+      description: " One of the best sneaker in world that helps you walk miles comfortably ",
+      category: "CLOTHES & FOOTWEAR",
+      brand: "Nike",
+      product_type: "New",
+      product_size: 343.32,
+      product_color: ["green", "red", "White", "black"],
+      product_weight: 12,
+      product_quantity: 5,   
+      product_model_number:  "0942022me32",
+      product_serial_number:"M93468V3983232"
     },
     {
+      id: 3,
+      product_name: "Nike Air Force1",
+      product_price: 99.43,
+      product_image: profile,
+      product_status:"Availaible",  
+      imageURL: profile,
+      description: " One of the best sneaker in world that helps you walk miles comfortably ",
+      category: "CLOTHES & FOOTWEAR",
+      brand: "Nike",
+      product_type: "New",
+      product_size: 343.32,
+      product_color: ["green", "red", "White", "black"],
+      product_weight: 12,
+      product_quantity: 5,   
+      product_model_number:  "0942022me32",
+      product_serial_number:"M93468V3983232"
+    },
+    {
+      id: 4,
+      product_name: "Nike Air Force1",
+      product_price: 99.43,
+      product_image: profile,
+      product_status:"Availaible",  
+      imageURL: profile,
+      description: " One of the best sneaker in world that helps you walk miles comfortably ",
+      category: "CLOTHES & FOOTWEAR",
+      brand: "Nike",
+      product_type: "New",
+      product_size: 343.32,
+      product_color: ["green", "red", "White", "black"],
+      product_weight: 12,
+      product_quantity: 5,   
+      product_model_number:  "0942022me32",
+      product_serial_number:"M93468V3983232"
+    },
+    {
+      id: 5,
+      product_name: "Nike Air Force1",
+      product_price: 99.43,
+      product_image: profile,
+      product_status:"Availaible",  
+      imageURL: profile,
+      description: " One of the best sneaker in world that helps you walk miles comfortably ",
+      category: "CLOTHES & FOOTWEAR",
+      brand: "Nike",
+      product_type: "New",
+      product_size: 343.32,
+      product_color: ["green", "red", "White", "black"],
+      product_weight: 12,
+      product_quantity: 5,   
+      product_model_number:  "0942022me32",
+      product_serial_number:"M93468V3983232"
+    },
+   
 
-       id:3,
-      product_name: "Nike Air Force 7",
-      product_price: 929.99,
-      product_image: profile,
-      product_status:"out of stock"
-    },
-    {id:4,
-      product_name: "Nike Air Force4",
-      product_price: 300.54,
-      product_image: profile,
-      product_status:"Availaible"
-    },
-    {
-       id:5,
-      product_name: "Nike Air Force4",
-      product_price: 300.54,
-      product_image: profile,
-      product_status:"Availaible"
-    },
-    {
-       id:6,
-      product_name: "Nike Air Force4",
-      product_price: 300.54,
-      product_image: profile,
-      product_status:"Availaible"
-    }
 ]

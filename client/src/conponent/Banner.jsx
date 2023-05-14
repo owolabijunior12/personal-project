@@ -3,7 +3,7 @@ import profile from "../asset/profile.jpg"
 
 const Banner = () => {
   return (
-    <div className=' h-auto  md:p-0  rounded-3xl flex justify-evenly bg-black m-4 py-2 text-textColor mb-6 bg-'>    
+    <div className=' h-auto   md:p-0  rounded-3xl flex justify-evenly bg-primary m-4 py-2 text-textColor mb-6 bg-'>    
        <div className='flex  flex-col justify-center text-center h-full items-center'>
             <p className='text-2xl pt-10'>BEST SALES OF THE WEEK</p> 
             <p className='text-lg py-4'> Nike Air Force 1 has the highest sales for this week</p>

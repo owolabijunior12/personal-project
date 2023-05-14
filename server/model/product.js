@@ -26,7 +26,7 @@ const productSchema = mongoose.Schema(
             require: true,
         },
         product_type: {
-            type: String,
+            type: Number,
             require: true,
         },
         product_size: {
@@ -38,6 +38,22 @@ const productSchema = mongoose.Schema(
             require: true,
         },
         product_weight: {
+            type: Number,
+            require: true,
+        },       
+        product_quantity: {
+            type: Number,
+            require: true,
+        },       
+        product_status: {
+            type: String,
+            require: true,
+        },       
+        product_serial_number: {
+            type: String,
+            require: true,
+        },       
+        product_model_number: {
             type: String,
             require: true,
         },       
