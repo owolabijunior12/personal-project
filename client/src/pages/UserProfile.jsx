@@ -29,6 +29,7 @@ const UserProfile = () => {
                 </div> 
                 <div  className='flex justify-center items-center m-4 flex-col' >
                 <button type='button' className=' border-textColor border hover:bg-red-600 w-full text-white m-2 p-2 rounded-xl'>Edit your profile</button>    
+                <button type='button' className=' border-textColor border hover:bg-red-600 w-full text-white m-2 p-2 rounded-xl'>Become a Seller</button>    
                 <button type='button' className=' border-textColor border hover:bg-red-600 w-full text-white m-2 p-2 rounded-xl'>Change Password</button>          
                 <Link to={`/login?redirect=${redirect}`} className='w-full'>
                      <button type='button' className=' border-textColor border hover:bg-red-600 w-full text-white m-2 p-2 rounded-xl'>Logout</button>   

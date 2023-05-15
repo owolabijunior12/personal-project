@@ -158,10 +158,10 @@ const ProductDetails = () => {
         
                    ].map((product)=>
                
-                   <div className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
+                   <div key={product.id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
                      <div className=" min-w-[120px] w-32 h-30 min-h-[120px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                        <img
-                         whileHover={{ scale: 1.05 }}
+                         
                          src={product.product_image}
                          alt="product_image"
                          className="w-full h-full rounded-lg object-cover"
@@ -205,10 +205,10 @@ const ProductDetails = () => {
         
                    ].map((product)=>
                
-                   <div className="relative flex w-30 min-w-160   cursor-pointer   hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
+                   <div key={product.id} className="relative flex w-30 min-w-160   cursor-pointer   hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
                      <div className=" min-w-[120px] w-32 h-30 min-h-[120px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                        <img
-                         whileHover={{ scale: 1.05 }}
+                         
                          src={product.product_image}
                          alt="product_image"
                          className="w-full h-full rounded-lg object-cover"

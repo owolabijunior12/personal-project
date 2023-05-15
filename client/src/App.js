@@ -10,6 +10,8 @@ import ShoppingCart from './pages/ShoppingCart'
 import ProductDetails  from './pages/ProductDetails'
 import HomeScreen from './conponent/HomeScreen'
 import UserProfile from './pages/UserProfile';
+import AdminPage from './pages/AdminPage';
+import AdminPageAddProduct from './pages/AdminPageAddProduct';
 function App() {
   const nagivate = useNavigate();
   const [auth,setAuth] = useState(false || window.localStorage.getItem("auth")===true);
@@ -44,7 +46,9 @@ function App() {
                     <Route path="/shoppingCart" element={<ShoppingCart />} />
                       <Route path="/checkout"     element={<CheckOut/>} />
                       <Route path="/signup" element={<Signup />} />  
+                      <Route path="/admin-page" element={<AdminPage />} />  
                       <Route path="/product-details" element={<ProductDetails  />} />  
+                      <Route path="/adminpageadder" element={<AdminPageAddProduct  />} />  
                       <Route path="/user-profile" element={<UserProfile  />} />  
                   </Routes>
                   

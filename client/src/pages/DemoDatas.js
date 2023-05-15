@@ -2,7 +2,7 @@ import profile from "../asset/profile.jpg"
 export const image = profile
 export const productData=[
     {
-      id: 1,
+      id: 97865435671,
       product_name: "Nike Air Force1",
       product_price: 99.43,
       product_image: profile,
@@ -20,7 +20,7 @@ export const productData=[
       product_serial_number:"M93468V3983232"
     },
     {
-      id: 2,
+      id: 7564523452,
       product_name: "Nike Air Force1",
       product_price: 99.43,
       product_image: profile,
@@ -38,7 +38,7 @@ export const productData=[
       product_serial_number:"M93468V3983232"
     },
     {
-      id: 3,
+      id: 5345673,
       product_name: "Nike Air Force1",
       product_price: 99.43,
       product_image: profile,
@@ -56,7 +56,7 @@ export const productData=[
       product_serial_number:"M93468V3983232"
     },
     {
-      id: 4,
+      id: 2345664,
       product_name: "Nike Air Force1",
       product_price: 99.43,
       product_image: profile,
@@ -74,7 +74,7 @@ export const productData=[
       product_serial_number:"M93468V3983232"
     },
     {
-      id: 5,
+      id: 432235,
       product_name: "Nike Air Force1",
       product_price: 99.43,
       product_image: profile,

@@ -15,14 +15,13 @@ const Product = () => {
        {/* <Link to={`/product-details/${productData.indexOf}`}> */}
        <div  className='flex flex-wrap'>
                     
-                    { productData?.map(({product_image,product_name,product_price,product_status})=>
+                    { productData?.map(({product_image,id,product_name,product_price,product_status})=>
                       <Link to={`/product-details/`}>
         
-                          <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
+                          <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
         
                             <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
-                              <img
-                                whileHover={{ scale: 1.05 }}
+                              <img                                
                                 src={product_image}
                                 alt="product_image"
                                 className="w-full h-full rounded-lg object-cover"
@@ -45,18 +44,18 @@ const Product = () => {
                           )}      
                         </div>
          
-        {/* <div className='text-4xl text-center w-full bg-black text-textColor'>Toiletries</div>
-        <Link to={`/product-details/`}> */}
+         {/* <div className='text-4xl text-center w-full bg-black text-textColor'>Toiletries</div>
+        
               <div  className='flex flex-wrap'>
                     
-            { productData?.map(({product_image,product_name,product_price,product_status})=>
-              <Link to={`/product-details/`}>
+            { productData?.map(({id,product_image,product_name,product_price,product_status})=>
+              <Link to={`/product-details/${id}`}>
 
-                  <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
+                  <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
 
                     <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                       <img
-                        whileHover={{ scale: 1.05 }}
+                        
                         src={product_image}
                         alt="product_image"
                         className="w-full h-full rounded-lg object-cover"
@@ -82,14 +81,14 @@ const Product = () => {
           <div className='text-4xl text-center w-full bg-black text-textColor' id='#electronic'>Electronic</div>
           <div  className='flex flex-wrap'>
                     
-                    { productData?.map(({product_image,product_name,product_price,product_status})=>
-                      <Link to={`/product-details/`}>
+                    { productData?.map(({product_image,id,product_name,product_price,product_status})=>
+                      <Link to={`/product-details/${id}`}>
         
-                          <div  className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
+                          <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-primary m-4 shadow-md rounded-lg flex-col items-center">
         
                             <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                               <img
-                                whileHover={{ scale: 1.05 }}
+                                
                                 src={product_image}
                                 alt="product_image"
                                 className="w-full h-full rounded-lg object-cover"
@@ -110,7 +109,7 @@ const Product = () => {
                         </div> 
                          </Link>    
                           )}      
-                        </div>
+                        </div> */}
     </div>
    
   )

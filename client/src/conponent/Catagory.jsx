@@ -37,7 +37,7 @@ const Catagory = () => {
            
         ]?.map((Catagory)=> 
             
-                <p className='m-2 w-auto rounded-xl h-auto text-center bg-textColor  p-4'>{Catagory.brand}{FiKey} </p>            
+                <p key={Catagory.id} className='m-2 w-auto rounded-xl h-auto text-center bg-textColor  p-4'>{Catagory.brand}{FiKey} </p>            
         )
       }
       </div>
