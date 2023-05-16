@@ -6,20 +6,22 @@ export const baseURL = "http://localhost:1609/";
 
 export const Signin = async () => {
   try {
-    const siginData = await axios.get(`${baseURL}api/user/signin`,{
-
-    });
+    const siginData = await axios.get(`${baseURL}api/user/signin`)
     return siginData.data;
 
   } catch (error) {
     return null;
   }
 };
-export const Signup = async () => {
+export const Signup = async (name, username, email, password) => {
   try {
-    const res = await axios.post(`${baseURL}api/user/save`);
+    const res = await axios.post(`${baseURL}api/user/save`, {
+      name,
+      username,
+      email,
+      password
+    });
     return res.data;
-
   } catch (error) {
     return null;
   }

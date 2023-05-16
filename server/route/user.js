@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
  // const jwt = require("jsonwebtoken");
+ const User = require("../model/signup")
 
 router.post("/save", async (req, res) => {
     try {
@@ -17,7 +18,7 @@ router.post("/save", async (req, res) => {
     }
 });
 
-router.get("/logout", (req, res, next) => {
+router.get("/logout", (req, res, next) => {cdcdcd 
     res.clearCookie("token");
     res.status(200).json({success: true, message: "Logout successful"});
 });
