@@ -51,26 +51,27 @@ router.get("/singleUser/:id", async (req, res, next) => {
 
 router.post("/signin", async (req, res, next) => {
     try {
-        const {email, password} = req.body;
-        if (!email || !password) {
-            return next(new Error("Email and password are required"));
-        }
-        const user = await User.findOne({email});
-        if (!user) {
-            return next(new Error("Invalid credentials"));
-        }
-        const isMatched = await user.comparePassword(password);
-        if (!isMatched) {
-            return next(new Error("Invalid credentials"));
-        }
-        const token = await createToken(user);
-        res.cookie("token", token, {httpOnly: true});
-        res.status(200).json({success: true, user: user._id});
+      const { email, password } = req.body;
+      if (!email || !password) {
+        throw new Error("Email and password are required");
+      }
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new Error("Invalid credentials");
+      }
+      const isMatched = await user.comparePassword(password);
+      if (!isMatched) {
+        throw new Error("Invalid credentials");
+      }
+      const token = await createToken(user);
+      res.cookie("token", token, { httpOnly: true });
+      res.status(200).json({ success: true, user: user._id });
     } catch (error) {
-        console.log(error);
-        next(new Error("Cannot log in, check your credentials"));
+      console.error(error); 
+      next(new Error("Cannot log in, check your credentials"));
     }
-});
+  });
+  
 
 module.exports = router;
 

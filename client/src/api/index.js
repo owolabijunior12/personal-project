@@ -4,10 +4,13 @@ export const baseURL = "http://localhost:1609/";
     console.log(`${baseURL}api/product/getAll`);
 
 
-export const Signin = async () => {
+export const Signin = async (username,password) => {
   try {
-    const siginData = await axios.get(`${baseURL}api/user/signin`)
-    return siginData.data;
+    const res = await axios.get(`${baseURL}api/user/signin`,{
+      username,
+      password
+    })
+    return res.data;
 
   } catch (error) {
     return null;

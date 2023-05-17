@@ -8,9 +8,10 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { useLocation, useNavigate,Link } from 'react-router-dom';
+import { Signin } from '../api';
 const Login = ({useAuth, history,setAuth}) => {
       const navigate = useNavigate();
-      const [email,setEmail] =useState("");
+      const [username,setUsername] =useState("");
       const [password,setPassword] = useState("")
       // const [values,setValues] =useState()
       const authEmail = localStorage.getItem("email")
@@ -29,19 +30,34 @@ const Login = ({useAuth, history,setAuth}) => {
             });
             const  handleSubmit = async (e)=>{
              e.preventDefault();
+                  if ( !username  || !password ) {
+                        toast.error(`You need to fill up all your details`);
+                    }
 
+                          try {
+                      const response = await Signin(username,password); // Serialize `data` as JSON                      
+                      console.log(response);
+                      toast.success("Logged in successfully");
+                      window.localStorage.setItem("auth", "true"); 
+                      setTimeout(() => {
+                        navigate("/home");
+                      }, 5000);
+                    } catch (error) {                      
+                      console.error(error);
+                      toast.error(`An error occurred during log in.`);
+                    }
 
-
-            if ( password===authPassword && email===authEmail  ){                  
-                  navigate("/home");
-                  toast.success("Logged in successfully")
-                  window.localStorage.setItem("auth", "true");
-            }else{
-                  navigate("/login");
-                  toast.error("usernme or password is incorrect")
-            }
+            // if ( password===authPassword && email===authEmail  ){                  
+            //       navigate("/home");
+            //       
+            //       window.localStorage.setItem("auth", "true");
+            // }else{
+            //       navigate("/login");
+            //       toast.error("usernme or password is incorrect")
+            // }
                                                       
             }
+            
 
             const {search} = useLocation();
             const redirectInUrl = new URLSearchParams(search).get('redirect');
@@ -59,7 +75,7 @@ const Login = ({useAuth, history,setAuth}) => {
                   <h2>Welcome back {userInfo?.length >9?userInfo.slice(0,10):userInfo}.... </h2>
                   <form className='login-form' action="">
                         <div className='textbox'>
-                              <input type="email" onChange={e=>setEmail(e.target.value)}
+                              <input type="email" onChange={e=>setUsername(e.target.value)}
                               name="" placeholder='Email' id="" />
                               <span className='material-symbols-outline'>
                                     <CgProfile/>

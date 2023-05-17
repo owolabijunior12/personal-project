@@ -78,8 +78,7 @@ const Header = () => {
                       <p  className='flex m-4 justify-between  hover:font-bold duration-150 transition-all ease-in-out'>
                         LogOut<FiLogOut values="LogOut" />
                       </p>                      
-                      </Link>
-                      
+                      </Link>                      
                   </div>
 
                 )
