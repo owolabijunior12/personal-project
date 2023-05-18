@@ -96,7 +96,7 @@ const Header = () => {
  
       {!isDesktop && isMenuToggled && (
         <div className="fixed left-0 overflow-scroll scroll-m-5 scroll-textColor text-white bottom-0 h-full bg-black w-[300px] ">
-            {/* <HiMenu onClick={() => setIsMenuToggled(!isMenuToggled)} className=' text-4xl  lg:hidden text-white '/>    */}
+            
           
           <div className="flex bg-black justify-between px-4 py-4">            
           <Link to={'/'}>
