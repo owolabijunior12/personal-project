@@ -13,14 +13,14 @@ const Product = () => {
     <div className='flex flex-col justify-center items-center'>
        <div className='text-4xl text-center w-full bg-black text-textColor'>Accessories</div>
        {/* <Link to={`/product-details/${productData.indexOf}`}> */}
-       <div  className='flex flex-wrap'>
+       <div  className='flex'>
                     
                     { productData?.map(({product_image,id,product_name,product_price,product_status})=>
                       <Link to={`/product-details/`}>
         
-                          <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 shadow-md rounded-lg flex-col items-center">
+                          <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 overflow-x-scrolloverflow-auto hover:overflow-scroll shadow-md rounded-lg flex-col items-center">
         
-                            <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
+                            <div className="w-40  h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                               <img                                
                                 src={product_image}
                                 alt="product_image"
