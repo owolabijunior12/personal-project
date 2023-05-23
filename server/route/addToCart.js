@@ -41,7 +41,7 @@ router.get("/getOne/:id", async (req, res, next) => {
           next(error);
       }
   })
-router.delete("/delete/:id",async(res,req)=>{
+router.delete("/delete/:id",async(res,req,next)=>{
     try {
         const addToCart =await AddToCart.deleteOne({id:req.params.id});
         if(!addToCart.deletedCount){
@@ -53,7 +53,7 @@ router.delete("/delete/:id",async(res,req)=>{
         next(error)
     }
 })
-router.get("/getAll",async (res,req)=>{
+router.get("/getAll",async (res,req,next)=>{
     try {
         const addToCart = await AddToCart.find().sort({createdAt:1});
         res.status(200).json({success:true, addToCart});
@@ -62,3 +62,6 @@ router.get("/getAll",async (res,req)=>{
         next(error)
     }
 })
+
+
+module.exports= router;
