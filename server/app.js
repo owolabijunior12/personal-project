@@ -20,6 +20,9 @@ app.use("/api/product/",productRoute);
 const userRoute = require("./route/user");
 app.use("/api/user/",userRoute);
 
+const addToCartRoute = require("./route/addToCart");
+app.use("/api/addToCart/", )
+
 try {
     mongoose.connect(process.env.DB_STRINGS, {
         useNewUrlParser: true,
