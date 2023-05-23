@@ -21,6 +21,7 @@ const Header = () => {
   // const logOutHandler = ()=>{
      
   // }
+  const [isCart,setIsCart] =useState(false)
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   // const navbarBackground = isTopOfPage ? "" : "bg-red";
@@ -39,7 +40,7 @@ const Header = () => {
         <div className="flex justify-between gap-16 font-opensans text-sm font-semibold">
              <div className='relative scale-75 flex '>      
                  <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>0</span>                                   
-                    <p className='mx-5  text-textColor text-6xl'> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p>                                                                    
+                    <p className='mx-5  text-textColor text-6xl' onClick={setIsCart(!isCart )}> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p>                                                                    
                     <img 
                       onClick={() => setIsMenu(!isMenu)}                                        
                       src={profile} className=' w-12 h-12 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />

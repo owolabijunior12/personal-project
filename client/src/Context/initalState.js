@@ -5,5 +5,6 @@ export const initialState = {
   product:null,
   filters: null,
   filterByNewOld: null,
-  productIndex  : 0
+  productIndex  : 0,
+  cart:[],
 };

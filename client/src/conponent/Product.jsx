@@ -18,7 +18,7 @@ const Product = () => {
                     { productData?.map(({product_image,id,product_name,product_price,product_status})=>
                       <Link to={`/product-details/`}>
         
-                          <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4 overflow-x-scrolloverflow-auto hover:overflow-scroll shadow-md rounded-lg flex-col items-center">
+                          <div key={id} className="relative flex w-30 min-w-160   cursor-pointer hover:shadow-xl  hover:bg-white bg-black m-4  shadow-md rounded-lg flex-col items-center">
         
                             <div className="w-40  h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden items-center">
                               <img                                
