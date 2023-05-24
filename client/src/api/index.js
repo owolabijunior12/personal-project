@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const baseURL = "http://localhost:1609/";
-    console.log(`${baseURL}api/product/getAll`);
+console.log(`${baseURL}api/product/getAll`);
 
 
 export const Signin = async (username,password) => {
@@ -67,7 +67,46 @@ export const getAllProduct = async () => {
   };
 export const deleteProduct = async () => {
     try {
-      const res = await axios.get(`${baseURL}api/product/delete/:idx`);
+      const res = await axios.get(`${baseURL}api/product/delete/:id`);
+      return res.data;
+  
+    } catch (error) {
+      return null;
+    }
+  };
+  export const getAllCart = async ()=>{
+    try {
+      const res = await axios.get(`${baseURL}api/addToCart/getAll`);
+      return res.data;
+    } catch (error) {
+      return null
+    }
+  }
+  export const saveNewCart = async (product_name,product_price,product_image,product_size,product_qty) =>{
+    try {
+      const res = await axios.post(`${baseURL}api/addToCart/save`, {
+        product_name,
+        product_price,
+        product_image,
+        product_size,
+        product_qty
+      });
+      return res.data;
+    } catch (error) {
+      return null;
+    }
+  }
+  export const deleteCart = async ()=>{
+    try {
+      const res = await axios.get(`${baseURL}api/addToCart/delete/:id`) ;
+      return res.data     
+    } catch (error) {
+      return null
+    }
+  }
+  export const updateAddToCart = async () => {
+    try {
+      const res = await axios.put(`${baseURL}api/addToCart/update/:id`);
       return res.data;
   
     } catch (error) {

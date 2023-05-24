@@ -2,23 +2,22 @@ const express =require("express");
 const route =express.Router();
 const AddToCart =require("../model/addToCart");
 const router = require("./product");
-
-router.post("/save", async (res,req) =>{
+router.post("/save", async (req, res) => {
     try {
-        const  newAddToCart = await  AddToCart.create({
-            product_name: req.body.product_name,
-            product_price: req.body.product_price,
-            product_Image:req.body.product_Image,
-            product_size: req.body.product_size,
-            product_qty: req.body.product_qty
-
-        });
-        res.status(200).send({success:true, AddToCart:newAddToCart})
+      const newAddToCart = await AddToCart.create({
+        product_name: req.body.product_name,
+        product_price: req.body.product_price,
+        product_Image: req.body.product_Image,
+        product_size: req.body.product_size,
+        product_qty: req.body.product_qty
+      });
+      res.status(200).send({ success: true, AddToCart: newAddToCart });
     } catch (error) {
-        console.log(error);
-        res.status(400).send({error:"failed to save to cart"})
+      console.log(error);
+      res.status(400).send({ error: "Failed to save to cart" });
     }
-})
+  });
+  
 router.get("/getOne/:id", async (req, res, next) => {
     try {
       const addToCart = await AddToCart.findById(req.params.id);

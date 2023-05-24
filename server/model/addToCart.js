@@ -1,5 +1,5 @@
 const mongoose= require("mongoose");
-const addToCart = mongoose.Schema(
+const addToCartSchema = mongoose.Schema(
     {
         product_name:{
             type:String,
@@ -24,3 +24,4 @@ const addToCart = mongoose.Schema(
     },
     {timestamps:true}
 );
+module.exports = mongoose.model("addToCart", addToCartSchema);

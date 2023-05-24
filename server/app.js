@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser')
 require("dotenv").config()
 const app = express();
 const cors = require("cors");
 
+app.use(bodyParser.json())
 app.use(cors({origin:true}));
 app.use(express.json());
 
@@ -21,7 +23,7 @@ const userRoute = require("./route/user");
 app.use("/api/user/",userRoute);
 
 const addToCartRoute = require("./route/addToCart");
-app.use("/api/addToCart/", )
+app.use("/api/addToCart/", addToCartRoute )
 
 try {
     mongoose.connect(process.env.DB_STRINGS, {
