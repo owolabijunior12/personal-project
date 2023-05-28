@@ -6,7 +6,7 @@ import Footer from './Footer'
 import Header from './Header'
 import Catagory from './Catagory'
 import Banner from "./Banner"
-import { productData } from '../pages/DemoDatas'
+// import { productData } from '../pages/DemoDatas'
 
 
 import Product from "./Product"
