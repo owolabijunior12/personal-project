@@ -15,8 +15,7 @@ const Banner = () => {
        <div className='flex flex-col justify-center px-1 items-center max-w-xs '>
           <div className=' bottom-0 left-0'>
                 <p className='text-2xl py-2'> Nike Air Force 1</p>
-
-                {/* <p className='text-2xl'> Description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptas similique cupiditate! Vel maiores recusandae rem! Vel vero, nihil ab ratione saepe dolore perferendis laudantium cumque iusto quod sed nostrum.</p> */}
+                
                 <p> Price: $50.99  </p>
           </div>
         <div>
