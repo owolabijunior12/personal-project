@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const route = express.Router();
 const Product = require("../model/product");
 
-router.post("/save", async (req, res) => {
+route.post("/save", async (req, res) => {
     try {
       const newProduct = await Product.create({
         name: req.body.name,
@@ -28,7 +28,7 @@ router.post("/save", async (req, res) => {
   });
   
 
-router.get("/getOne/:id", async (req, res, next) => {
+route.get("/getOne/:id", async (req, res, next) => {
   try {
     const product = await Product .findById(req.params.id);
     if (!product) {
@@ -40,7 +40,7 @@ router.get("/getOne/:id", async (req, res, next) => {
     next(error);
   }
 });
-router.put("/update/id",async(req,res,next)=>{
+route.put("/update/id",async(req,res,next)=>{
     try {
         const {name,product_price,imageURL,description,quantity,catagorty}=res.body;
         const product =await product.findByIdAndUpdate(res.params.id);
@@ -51,7 +51,7 @@ router.put("/update/id",async(req,res,next)=>{
     }
 })
 
-router.delete("/delete/:id",async(res,req)=>{
+route.delete("/delete/:id",async(res,req)=>{
     try {
         const product =await Product.deleteOne({id:req.params.id});
         if(!product.deletedCount){
@@ -64,17 +64,18 @@ router.delete("/delete/:id",async(res,req)=>{
     }
 })
 
-router.get("/getAll",async (res,req)=>{
-    try {
-        const product = await Product.find().sort({createdAt:1});
-        res.status(200).json({success:true, product});
-    } catch (error) {
-        console.log(error);
-        next(error)
-    }
-})
+route.get("/getAll", async (req, res, next) => {
+  try {
+    const product = await Product.find().sort({ createdAt: 1 });
+    res.status(200).json({ success: true, product });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
 
 
 
 
-module.exports= router
+
+module.exports= route

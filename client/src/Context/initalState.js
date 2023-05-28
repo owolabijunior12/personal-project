@@ -2,7 +2,7 @@ export const initialState = {
   user: null,
   searchTerm: "",
   filterTerm: "all",
-  product:null,
+  allProduct:null,
   filters: null,
   filterByNewOld: null,
   productIndex  : 0,

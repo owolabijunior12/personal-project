@@ -16,7 +16,7 @@ const HomeScreen = () => {
        <Header/>
        <marquee behavior="move" direction="left"  className="text-xl mt-24 font-extrabold text-yellow-500"><i>Welcome to Iboytech Store... Where you can get all fairly used product that 100% secure </i></marquee>
        <Banner/>   
-       {/* <Catagory />       */}
+       <Catagory />      
         <Product   />
         <Footer/>     
      </div>

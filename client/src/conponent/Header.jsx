@@ -4,28 +4,25 @@ import profile from '../asset/profile.jpg';
 import {GiShoppingCart} from "react-icons/gi"
 import {FiLogOut} from "react-icons/fi"
 import {HiMenu} from 'react-icons/hi'
-import { AiFillCloseCircle, AiOutlineProfile } from 'react-icons/ai';
-import {useNavigate, Link, useLocation} from 'react-router-dom';
+import { AiFillCloseCircle,  } from 'react-icons/ai';
+import { Link, useLocation} from 'react-router-dom';
 // import Sidebar from './Sidebar';
 import  useMediaQuery, { filterByNewOld, filters } from '../utils/styles'
 // import { toast } from 'react-toastify';
 import { productData } from '../pages/DemoDatas';
 import { toast } from 'react-toastify';
-
+import {useStateValue} from '../Context/StateProvider'
 const Header = () => {
+  const [{user},dispatch] =useStateValue();
   // const navigate = useNavigate();
   const [isMenu, setIsMenu] = useState()
   const {search} = useLocation;  
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
-  // const logOutHandler = ()=>{
-     
-  // }
-  const [isCart,setIsCart] =useState(false)
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   // const navbarBackground = isTopOfPage ? "" : "bg-red";
-  const userInfo= localStorage.getItem("fullname")
+  // const userInfo= localStorage.getItem("user")
   // console.log(userInfo);
   return (
     <nav className={` bg-black z-40  w-full fixed top-0 py-6 text-textColor shadow-lg shadow-textColor`}>
@@ -40,7 +37,7 @@ const Header = () => {
         <div className="flex justify-between gap-16 font-opensans text-sm font-semibold">
              <div className='relative scale-75 flex '>      
                  <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>0</span>                                   
-                    <p className='mx-5  text-textColor text-6xl' onClick={setIsCart(!isCart )}> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p>                                                                    
+                    <p className='mx-5  text-textColor text-6xl' > <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p>                                                                    
                     <img 
                       onClick={() => setIsMenu(!isMenu)}                                        
                       src={profile} className=' w-12 h-12 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />
@@ -118,7 +115,7 @@ const Header = () => {
                         <Link to={"/user-profile"}>
                         <  div className=' flex gap-1' >
                                 <img src={profile}  className=' w-16 h-16 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />        
-                                <p className='text-4xl font-bold capitalize'> {userInfo?.length >9?userInfo.slice(0,11):userInfo}... <div className='text-lg'>Admin</div></p>
+                                <p className='text-4xl font-bold capitalize'> {user?.length >9?user.slice(0,11):user}... <div className='text-lg'>Admin</div></p>
                               </div>
                         </Link>         
                           
@@ -149,11 +146,11 @@ const Header = () => {
             <div className="flex flex-col">
                   <h1 className=' pb-2 font-extrabold capitalize'>Categorys</h1>
                   {filters.map(({id,name})=>
-                      <span key={id} className= ' p-4 capitalize text-base text-textColor' onClick={() => setIsMenuToggled(!isMenuToggled)}>{name}</span>
+                      <li key={id} className= ' p-4 capitalize text-base text-textColor' onClick={() => setIsMenuToggled(!isMenuToggled)}>{name}</li>
                   )}
                    <h1 className=' font-extrabold pb-2 capitalize'>Product Type</h1>
                     {filterByNewOld.map(({name, id})=>
-                      <p key={id} className= 'p-4 text-base text-textColor' onClick={() => setIsMenuToggled(!isMenuToggled)}>{name}</p>
+                      <li key={id} className= 'p-4 text-base text-textColor' onClick={() => setIsMenuToggled(!isMenuToggled)}>{name}</li>
                     )}
                       <p className= 'p-4 text-textColor' onClick={() => setIsMenuToggled(!isMenuToggled)}>Dark Mood</p> 
               </div>                                              

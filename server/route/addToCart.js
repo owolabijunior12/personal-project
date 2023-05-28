@@ -1,11 +1,11 @@
 const express =require("express");
 const route =express.Router();
 const AddToCart =require("../model/addToCart");
-const router = require("./product");
-router.post("/save", async (req, res) => {
+// const router = require("./product");
+route.post("/save", async (req, res) => {
     try {
       const newAddToCart = await AddToCart.create({
-        product_name: req.body.product_name,
+        name: req.body.name,
         product_price: req.body.product_price,
         product_Image: req.body.product_Image,
         product_size: req.body.product_size,
@@ -18,7 +18,7 @@ router.post("/save", async (req, res) => {
     }
   });
   
-router.get("/getOne/:id", async (req, res, next) => {
+route.get("/getOne/:id", async (req, res, next) => {
     try {
       const addToCart = await AddToCart.findById(req.params.id);
       if (!addToCart) {
@@ -30,37 +30,45 @@ router.get("/getOne/:id", async (req, res, next) => {
       next(error);
     }
   });
-  router.put("/update/id",async(req,res,next)=>{
-      try {
-          const {product_name,product_price,product_Image,product_size,product_qty}=res.body;
-          const addToCart  =await addToCart.findByIdAndUpdate(res.params.id);
-          res.status(200).send({success:true,addToCart});
-      } catch (error) {
-          console.log(error);
-          next(error);
+  route.put("/update/:id", async (req, res, next) => {
+    try {
+      const { name, product_price, product_Image, product_size, product_qty } = req.body;
+      const addToCart = await AddToCart.findByIdAndUpdate(req.params.id, {
+        name,
+        product_price,
+        product_Image,
+        product_size,
+        product_qty
+      }, { new: true });
+      res.status(200).json({ success: true, addToCart });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    } 
+  });
+  
+  route.delete("/delete/:id", async (req, res, next) => {
+    try {
+      const addToCart = await AddToCart.deleteOne({ _id: req.params.id });
+      if (addToCart.deletedCount === 0) {
+        return res.status(404).json({ success: false, error: "Add to cart not found" });
       }
-  })
-router.delete("/delete/:id",async(res,req,next)=>{
-    try {
-        const addToCart =await AddToCart.deleteOne({id:req.params.id});
-        if(!addToCart.deletedCount){
-            return res.status(404).send({success:false,errror:"add to cart not found"});            
-        }
-        res.status(200).send({success:true,message:"add to cart is deleted successfilly" });
+      res.status(200).json({ success: true, message: "Add to cart is deleted successfully" });
     } catch (error) {
-        console.log(error);
-        next(error)
+      console.log(error);
+      next(error);
     }
-})
-router.get("/getAll",async (res,req,next)=>{
-    try {
-        const addToCart = await AddToCart.find().sort({createdAt:1});
-        res.status(200).json({success:true, addToCart});
-    } catch (error) {
-        console.log(error);
-        next(error)
-    }
-})
+  });
+  
+route.get("/getAll", async (req, res, next) => {
+  try {
+    const addToCart = await AddToCart.find().sort({ createdAt: 1 });
+    res.status(200).json({ success: true, addToCart });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
 
 
-module.exports= router;
+module.exports= route;

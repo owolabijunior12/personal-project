@@ -15,7 +15,7 @@ export const Signin = async (username,password) => {
   } catch (error) {
     return null;
   }
-  
+
 };
 export const Signup = async (name, username, email, password) => {
   try {
@@ -60,6 +60,17 @@ export const updateProduct = async () => {
 export const getAllProduct = async () => {
     try {
       const res = await axios.get(`${baseURL}api/product/getAll`);
+      // console.log(res?.data)
+      return res.data;
+  
+    } catch (error) {
+      return null;
+    }
+  };
+  
+export const getAllUser = async () => {
+    try {
+      const res = await axios.get(`${baseURL}api/user/getUser`);
       return res.data;
   
     } catch (error) {

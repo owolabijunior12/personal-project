@@ -1,7 +1,7 @@
 const mongoose= require("mongoose");
 const addToCartSchema = mongoose.Schema(
     {
-        product_name:{
+        name:{
             type:String,
             require:true
         },

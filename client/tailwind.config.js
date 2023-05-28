@@ -18,6 +18,15 @@ export const theme = {
       880: "880px",
       508: "508px",
     },
+    animation: {
+      marquee: 'marquee 25s linear infinite',
+    },
+    keyframes: {
+      marquee: {
+        '0%': { transform: 'translateX(0%)' },
+        '100%': { transform: 'translateX(-100%)' },
+      }
+    },
     
     content: {
       brush: "url('./assets/profile.jpg')",
