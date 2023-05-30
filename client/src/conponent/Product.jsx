@@ -11,36 +11,38 @@ const Product = () => {
   const navigate = useNavigate();
   const [{ allProduct }, dispatch] = useStateValue();
 
-  useEffect(() => {
-    if (!allProduct) {
-      getAllProduct().then((data) => {
-        dispatch({
-          type: actionType.SET_PRODUCT,
-          product: data,
-        });
-        console.log(data);
+ useEffect(() => {
+  if (!allProduct) {
+    getAllProduct().then((data) => {
+      dispatch({
+        type: actionType.SET_PRODUCT,
+        allProduct: data.product,
       });
-    }
-  }, []);
+      console.log(data.product);
+    });
+  }
+}, []);
 
   return (
-    <>
+   <div className='mb-8 py-10'>
       <div className='flex pl-6 bg-black text-textColor text-4xl mb-7'>FootWears</div>
-      <div className='flex'>
-        {allProduct &&
-          allProduct.map((data, index) => (
-            <div key={data._id}>
-              <Link to={`/product/${data._id}`}>
-                <motion.div className='bg-black h-11'>
-                  <p className='text-6xl'>{data.product_color}</p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                </motion.div>
-              </Link>
-            </div>
-          ))}
+      <div className='h-6 mb-3 w-20'>
+        <ProductContainer  data={allProduct}/>
       </div>
-    </>
+   </div>
   );
 };
 
 export default Product;
+
+export const ProductContainer =( {data})=>{
+  return (
+    <div className=" w-full  flex flex-wrap gap-3  items-center justify-evenly">
+      {data&&
+        data.map((product,i)=>{
+            <productCard key={product.id}  data={product} index={i}/>
+        })
+      }
+    </div>
+  )
+}
