@@ -20,7 +20,7 @@ const reducer = (state, action) => {
         case actionType.SET_PRODUCT:
       return {
         ...state,
-        product: action.product,
+        allProduct: action.allProduct,
       };
       case action.SET_ALL_USERS:
         return{

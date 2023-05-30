@@ -2,9 +2,9 @@ export const initialState = {
   user: null,
   searchTerm: "",
   filterTerm: "all",
-  allProduct:null,
+  allProduct:null ,
   filters: null,
   filterByNewOld: null,
   productIndex  : 0,
-  cart:[],
+  cart:null,
 };
