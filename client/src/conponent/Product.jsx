@@ -33,11 +33,13 @@ export default Product;
 
 
 export const ProductContainer = ({ data }) => {
+  const navigate = useNavigate();
   return (
    <div className='flex overflow-hidden'>
       {data?.map((data, index) => (
-        <Link to={`/product-details/${data._id}`}>        
+            
         <motion.div
+        onClick={() => navigate(`/product-details/${data._id}`)}
         key={data._index}
           whileTap={{ scale: 0.8 }}
           initial={{ opacity: 0, translateX: -50 }}
@@ -65,7 +67,7 @@ export const ProductContainer = ({ data }) => {
           </p>
           
         </motion.div>
-        </Link>
+        
       ))}
     </div> 
   );
