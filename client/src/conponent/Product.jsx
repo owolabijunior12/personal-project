@@ -12,7 +12,7 @@ const Product = () => {
     if (!allProduct) {
       getAllProduct().then((data) => {
         dispatch({
-          type: actionType.SET_PRODUCT,
+          type: actionType.SET_ALL_PRODUCT,
           allProduct: data.product,
         });        
       });
@@ -35,7 +35,7 @@ export default Product;
 export const ProductContainer = ({ data }) => {
   const navigate = useNavigate();
   return (
-   <div className='flex overflow-hidden'>
+   <div className='flex overflow-auto'>
       {data?.map((data, index) => (
             
         <motion.div

@@ -56,6 +56,6 @@ export const isNotActiveStyles =
     { id: 2, name: "Addias", value: "Addias" },
     { id: 3, name: "Puma", value: "Puma" },
     { id: 4, name: "Puma", value: "Puma" },
-    { id: 4, name: "Gucci", value: "Gucci" },
+    { id: 5, name: "Gucci", value: "Gucci" },
    ]
   

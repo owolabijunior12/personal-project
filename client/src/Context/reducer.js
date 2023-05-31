@@ -1,8 +1,9 @@
 export const actionType = {
   SET_USER: "SET_USER",
+  SET_PRODUCT:"SET_PRODUCT",
   SET_SEARCH_TERM: "SET_SEARCH_TERM",
   SET_FILTER_TERM: "SET_FILTER_TERM",
-  SET_PRODUCT: "SET_PRODUCT",
+  SET_ALL_PRODUCT: "SET_ALL_PRODUCT",
   SET_FILTER: "SET_FILTER",
   SET_FILTER_BY_NEW_OLD: "SET_FILTER_BY_NEW_OLD",
   SET_ALL_USERS: "SET_ALL_USERS",
@@ -18,6 +19,11 @@ const reducer = (state, action) => {
         user: action.user,
       };
         case actionType.SET_PRODUCT:
+      return {
+        ...state,
+        product: action.product,
+      };
+        case actionType.SET_ALL_PRODUCT:
       return {
         ...state,
         allProduct: action.allProduct,

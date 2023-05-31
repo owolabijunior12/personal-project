@@ -48,6 +48,14 @@ export const SaveProduct = async () => {
       return null;
     }
   };
+  export const getOneProduct= async (id) => {
+    try {
+      const res = axios.get(`${baseURL}api/product/getOne/${id}`);
+      return res;
+    } catch (error) {
+      return null;
+    }
+  };
 export const updateProduct = async () => {
     try {
       const res = await axios.put(`${baseURL}api/product/getOne/:id`);

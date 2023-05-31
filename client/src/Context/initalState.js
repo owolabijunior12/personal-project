@@ -1,5 +1,6 @@
 export const initialState = {
   user: null,
+  product:null,
   searchTerm: "",
   filterTerm: "all",
   allProduct:null ,
