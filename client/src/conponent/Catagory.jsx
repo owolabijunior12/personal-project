@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiKey } from 'react-icons/fi'
+import { Brands } from '../utils/styles'
 
 const Catagory = () => {
   return (
@@ -7,41 +8,11 @@ const Catagory = () => {
       <div className='text-4xl px-3 w-full bg-primary text-textColor'>Brands</div>
       <div className=' flex flex-wrap '>
            {
-        [
-            {
-                id:1,
-                brand:"Nike",
-                color:"black"
-            },
-            {
-                id:2,
-                brand:"Nike",
-                color:"black"
-            },
-            {
-                id:3,
-                brand:"Nike",
-                color:"black"
-            },
-            {
-               id:4,
-                brand:"Nike",
-                color:"black"
-            },
-            {
-                id:5,
-                brand:"Nike",
-                color:"black"
-            },
-       
-           
-        ]?.map((Catagory)=> 
-            
-                <p key={Catagory.id} className='m-2 w-auto rounded-xl h-auto text-center bg-textColor  p-4'>{Catagory.brand}{FiKey} </p>            
+      Brands.map(({id,name})=>                           
+            <p key={id} className='m-2 w-auto font-bold rounded-xl h-auto text-center bg-textColor  p-4'>{name} </p>            
         )
       }
-      </div>
-   
+      </div>   
     </div>
   )
 }

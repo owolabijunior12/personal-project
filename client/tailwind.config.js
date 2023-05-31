@@ -59,6 +59,7 @@ export const theme = {
       textColor: "#dfb56b",
       cartNumBg: "#e80013",
       primary: "#000",
+      bgColor:" #3c3c3c;",
       cardOverlay: "rgba(256,256,256,0.4)",
       darkOverlay: "rgba(0,0,0,0.5)",
       lightOverlay: "rgba(256,256,256,0.2)",

@@ -18,11 +18,12 @@ const Product = () => {
       });
     }
   }, []);
+// console.log(allProduct._id);
   return (
     <div className='mb-3  w-full py-10'>
       <div className='flex pl-6 bg-black text-textColor text-4xl mb-7'>FootWears</div>
       <div className=' mb-3 '>
-        <ProductContainer data={allProduct} /> 
+        <ProductContainer data={allProduct}/> 
       </div>
     </div>
   );
@@ -33,11 +34,11 @@ export default Product;
 
 export const ProductContainer = ({ data }) => {
   return (
-   <div className='flex overflow-auto '>
+   <div className='flex overflow-hidden'>
       {data?.map((data, index) => (
         <Link to={`/product-details/${data._id}`}>        
         <motion.div
-          key={data._id}
+        key={data._index}
           whileTap={{ scale: 0.8 }}
           initial={{ opacity: 0, translateX: -50 }}
           animate={{ opacity: 1, translateX: 0 }}

@@ -46,13 +46,16 @@ export const isNotActiveStyles =
     { id: 2, name: "Fairly Used", value: "Fairly Used" },
   
   ];
-  // export const statusChecker = () =>{
-  //   productData[product_status]
-  //   if (product_status) {
-
-      
-  //   } else {
-      
-  //   }
-  // }
+  export const filterProductStatus = [
+    { id: 1, name: "Out Of Stock", value: "Out of Stock" },
+    { id: 2, name: "Avaliable", value: "Availiable" },
+  
+  ];
+   export  const Brands =[
+    { id: 1, name: "Nike", value: "Nike" },
+    { id: 2, name: "Addias", value: "Addias" },
+    { id: 3, name: "Puma", value: "Puma" },
+    { id: 4, name: "Puma", value: "Puma" },
+    { id: 4, name: "Gucci", value: "Gucci" },
+   ]
   
