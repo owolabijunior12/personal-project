@@ -47,8 +47,9 @@ const ProductDetails = () => {
             <AiFillStar  className='text-sm'/>
             <AiFillStar  className='text-sm'/>
             <AiOutlineStar className='text-sm'/>                
-          </div>
-          <progress max={100} className='rounded-lg bg-red-500'>20</progress>
+          </div>                    
+
+          <progress max="100"  value="30" className='rounded-lg bg-red-500'>20</progress>
           <p className='flex mr-5'> <div className='bg-green-600 rounded-full mt-1 w-0 h-0 p-2 m-2 '></div> <p>Status: {product.product_status}</p></p>
           <div className=' mb-4'>
           <button type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl'>Buy Now</button>             
@@ -89,6 +90,14 @@ const ProductDetails = () => {
           <tr>
               <th className='border p-4' >Size:</th>
               <td className='border p-4'>{product.product_size}</td> 
+            </tr>   
+          <tr>
+              <th className='border p-4' >Weight:</th>
+              <td className='border p-4'>{product.product_weight}</td> 
+            </tr>   
+          <tr>
+              <th className='border p-4' >Color:</th>
+              <td className='border p-4'>{product.product_color}</td> 
             </tr>   
           <tr>
               <th className='border p-4' >New / Used:</th>
