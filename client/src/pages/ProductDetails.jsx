@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../conponent/Header'
+import {motion} from 'framer-motion'
+import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
 import { useParams,Link } from 'react-router-dom'
 import Footer from '../conponent/Footer'
 import { image, productData } from './DemoDatas'
@@ -8,8 +10,9 @@ import { AiFillStar, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'
 import { useStateValue } from '../Context/StateProvider'
 import { actionType } from '../Context/reducer'
 const ProductDetails = () => {
+  const [cartValue, setCartValue] = useState(0);
   const { productId } = useParams();
-  const [{ product }, dispatch] = useStateValue();
+  const [{ product,addToCart }, dispatch] = useStateValue();
 
   useEffect(() => {
     getOneProduct(productId).then((res) => {
@@ -19,8 +22,28 @@ const ProductDetails = () => {
       });
      
     });
+    
   }, []);
-   console.log(product);
+  
+   let count = 0
+   const AddCart =()=>{    
+    console.log("added to cart")
+   }
+   const BuyNow =()=>{    
+    console.log("Buy Now")
+   }
+   const decrease =()=>{    
+    if(count<=0){
+      return count
+    }else{
+      count--
+    }
+   }
+   const increase =()=>{ 
+    count++       
+   }
+   
+   
   return (
     <div className='w-full'>
       <Header/>
@@ -51,9 +74,34 @@ const ProductDetails = () => {
 
           <progress max="100"  value="30" className='rounded-lg bg-red-500'>20</progress>
           <p className='flex mr-5'> <div className='bg-green-600 rounded-full mt-1 w-0 h-0 p-2 m-2 '></div> <p>Status: {product.product_status}</p></p>
+          <div className='border gap-4 w-32 flex text-3xl justify-between items-center'>
+            <motion.button
+            whileTap={{ scale: 0.8 }}         
+            transition={{ duration: 0.3}}
+             type='button'  
+             onClick={decrease}
+             className='h-8 w-8 text-center bg-fuchsia-50'>
+              <AiOutlineMinus className='font-bold text-2xl text-textColor' />
+              </motion.button>
+            <p>{count}</p>
+            <motion.button
+            whileTap={{ scale: 0.8 }}        
+            transition={{ duration: 0.3}}
+            onClick={increase}
+             type='button'  
+             className='h-8 w-8 text-center bg-fuchsia-50'>
+              <AiOutlinePlus className='font-bold text-2xl text-textColor' />
+              </motion.button>
+          </div>
           <div className=' mb-4'>
-          <button type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl'>Buy Now</button>             
-          <button type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl'>Add To Cart</button>             
+          <motion.button
+           whileTap={{ scale: 0.8 }}        
+           transition={{ duration: 0.3}}
+          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl' onClick={BuyNow}>Buy Now</motion.button>             
+          <motion.button 
+           whileTap={{ scale: 0.8 }}        
+           transition={{ duration: 0.3}}
+          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl' onClick={AddCart} >Add To Cart</motion.button>             
         </div>
         <div className='mb-4'>
         <hr />

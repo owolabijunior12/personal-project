@@ -7,6 +7,7 @@ export const actionType = {
   SET_FILTER: "SET_FILTER",
   SET_FILTER_BY_NEW_OLD: "SET_FILTER_BY_NEW_OLD",
   SET_ALL_USERS: "SET_ALL_USERS",
+  SET_CART_QTY:"SET_CART_QTY",
   SET_PRODUCT_INDEX:"SET_PRODUCT_INDEX",
   SET_ADD_CART:"SET_ADD_CART"
 };
@@ -22,6 +23,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         product: action.product,
+      };
+      case actionType.SET_CART_QTY:
+      return {
+        ...state,
+        cartQty: action.cartQty,
       };
         case actionType.SET_ALL_PRODUCT:
       return {
