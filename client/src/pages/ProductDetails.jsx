@@ -25,24 +25,6 @@ const ProductDetails = () => {
     
   }, []);
   
-   let count = 0
-   const AddCart =()=>{    
-    console.log("added to cart")
-   }
-   const BuyNow =()=>{    
-    console.log("Buy Now")
-   }
-   const decrease =()=>{    
-    if(count<=0){
-      return count
-    }else{
-      count--
-    }
-   }
-   const increase =()=>{ 
-    count++       
-   }
-   
    
   return (
     <div className='w-full'>
@@ -74,25 +56,6 @@ const ProductDetails = () => {
 
           <progress max="100"  value="30" className='rounded-lg bg-red-500'>20</progress>
           <p className='flex mr-5'> <div className='bg-green-600 rounded-full mt-1 w-0 h-0 p-2 m-2 '></div> <p>Status: {product.product_status}</p></p>
-          <div className='border gap-4 w-32 flex text-3xl justify-between items-center'>
-            <motion.button
-            whileTap={{ scale: 0.8 }}         
-            transition={{ duration: 0.3}}
-             type='button'  
-             onClick={decrease}
-             className='h-8 w-8 text-center bg-fuchsia-50'>
-              <AiOutlineMinus className='font-bold text-2xl text-textColor' />
-              </motion.button>
-            <p>{count}</p>
-            <motion.button
-            whileTap={{ scale: 0.8 }}        
-            transition={{ duration: 0.3}}
-            onClick={increase}
-             type='button'  
-             className='h-8 w-8 text-center bg-fuchsia-50'>
-              <AiOutlinePlus className='font-bold text-2xl text-textColor' />
-              </motion.button>
-          </div>
           <div className=' mb-4'>
           <motion.button
            whileTap={{ scale: 0.8 }}        
