@@ -60,11 +60,11 @@ const ProductDetails = () => {
           <motion.button
            whileTap={{ scale: 0.8 }}        
            transition={{ duration: 0.3}}
-          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl' onClick={BuyNow}>Buy Now</motion.button>             
+          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl' >Buy Now</motion.button>             
           <motion.button 
            whileTap={{ scale: 0.8 }}        
            transition={{ duration: 0.3}}
-          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl' onClick={AddCart} >Add To Cart</motion.button>             
+          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl'  >Add To Cart</motion.button>             
         </div>
         <div className='mb-4'>
         <hr />
