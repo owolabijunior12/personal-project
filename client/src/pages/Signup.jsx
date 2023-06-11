@@ -26,10 +26,10 @@ const handleSubmit = async (e) => {
   }
 
     try {
-      const response = await Signup(fullname,username,email,password); // Serialize `data` as JSON
-      // Handle the response as needed
-      console.log(response);
-      localStorage.setItem("user", fullname)
+      const response = await Signup(fullname,username,email,password);         
+         localStorage.setItem("username", username)
+         localStorage.setItem("email",email)
+         console.log(response);
       toast.success(`Sign up successful!`);
       setTimeout(() => {
         navigate("/home");

@@ -12,24 +12,48 @@ import HomeScreen from './conponent/HomeScreen'
 import UserProfile from './pages/UserProfile';
 import AdminPage from './pages/AdminPage';
 import AdminPageAddProduct from './pages/AdminPageAddProduct';
+import {useStateValue} from './Context/StateProvider'
+import { getAuth } from 'firebase/auth'
+import { actionType } from './Context/reducer';
+import { validateUser } from './api';
+import { app } from './configuration/firebase.configuration';
+
 function App() {
+  const firebaseAuth = getAuth(app)
   const nagivate = useNavigate();
+  const [{user}, dispatch] = useStateValue();
   const [auth,setAuth] = useState(false || window.localStorage.getItem("auth")===true);
-  useEffect(()=>{    
-    const authLogin =localStorage.getItem("auth")
-    if(authLogin === false){
-       nagivate("./login");
-    }else{
-      nagivate("/");
-    }
-   
-  },[])
+  useEffect(()=>{
+    firebaseAuth.onAuthStateChanged((userCred)=>{
+        console.log(userCred)
+      if(userCred){
+            userCred.getIdToken().then((token)=>{
+              console.log(token)
+              validateUser(token).then((data)=>{
+                console.log(data);
+                dispatch({
+                  type: actionType.SET_USER,
+                  user:data,
+                })
+              })
+            })
+      }else{
+        setAuth(false);
+        dispatch({
+          type: actionType.SET_USER,
+          user:user,
+        })
+        window.localStorage.setItem("auth", false);
+        nagivate("/");
+      }
+    })
+},[])
 
   return (
     <div className='min-w-[300px] h-auto  '>       
            <ToastContainer
             position="top-right"
-            autoClose={1000}
+            autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

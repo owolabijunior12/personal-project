@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import  Header from "../conponent/Header"
 import Footer from '../conponent/Footer';
 import profile from "../asset/profile.jpg"
 import { AiOutlineShopping } from 'react-icons/ai';
 // import
 import { useNavigate } from 'react-router-dom';
+import { getAllCart } from '../api';
+import { actionType } from '../Context/reducer';
+import { useStateValue } from '../Context/StateProvider';
+
 const ShoppingCart = () => {
+  const [{ allCart }, dispatch] = useStateValue();
   const navigate = useNavigate()
   const GoShopping=()=>{
       navigate("/home")
   }
+  useEffect(()=>{
+    if(!allCart){
+        getAllCart().then((data)=>{
+        dispatch({
+          type:actionType.SET_ADD_CART,
+          allCart:data
+        })
+        console.log(data.addToCart);
+      })
+    }
+    
+  },[])
   return (
     <div className='w-full'>
       <Header />

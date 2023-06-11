@@ -58,7 +58,7 @@ route.get("/getOne/:id", async (req, res, next) => {
       console.log(error);
       next(error);
     }
-  });
+  }); 
   
 route.get("/getAll", async (req, res, next) => {
   try {

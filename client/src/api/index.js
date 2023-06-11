@@ -56,6 +56,18 @@ export const SaveProduct = async () => {
       return null;
     }
   };
+  export const validateUser = async (token) => {
+    try {
+      const res = await axios.get(`${baseURL}api/user/login`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return null;
+    }
+  };
 export const updateProduct = async () => {
     try {
       const res = await axios.put(`${baseURL}api/product/getOne/:id`);

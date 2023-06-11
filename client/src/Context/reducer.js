@@ -41,7 +41,8 @@ const reducer = (state, action) => {
         };
         case action.SET_ADD_CART:
           return {
-            cart:action.cart
+            ...state,
+            allCart:action.allCart
           };
           case actionType.SET_SEARCH_TERM:
             return {

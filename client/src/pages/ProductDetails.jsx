@@ -5,14 +5,16 @@ import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
 import { useParams,Link } from 'react-router-dom'
 import Footer from '../conponent/Footer'
 import { image, productData } from './DemoDatas'
-import { getOneProduct } from '../api'
+import { getOneProduct, saveNewCart } from '../api'
 import { AiFillStar, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useStateValue } from '../Context/StateProvider'
 import { actionType } from '../Context/reducer'
 const ProductDetails = () => {
   const [cartValue, setCartValue] = useState(0);
   const { productId } = useParams();
-  const [{ product,addToCart }, dispatch] = useStateValue();
+  const [{ product,addTCart }, dispatch] = useStateValue();
 
   useEffect(() => {
     getOneProduct(productId).then((res) => {
@@ -24,7 +26,33 @@ const ProductDetails = () => {
     });
     
   }, []);
-  
+  // useEffect(()=>{
+  //   saveNewCart(product.product_name,product.product_price,product.product_size,product.product_image,product.product_qty).then((res)=>{
+  //     dispatch({
+  //       type:actionType.SET_ADD_CART,
+  //       cart:res.dat
+  //     })
+  //   })
+  // },[])
+  console.log(product)
+ const cartProduct=async()=>{
+  console.log("addtoCart");
+      try {
+        const addCart = await saveNewCart (
+          product.name,
+          product.product_price,
+          product.imageURL,
+          product.product_size,
+          product.product_quantity
+          );
+        localStorage.setItem("addToCartLocalStorage", addCart);
+        console.log(addCart);
+        toast.success(`${product.name} is added to cart`);
+      } catch (error) {
+        console.log(error);
+        toast.error(error);
+      }
+ }
    
   return (
     <div className='w-full'>
@@ -60,11 +88,20 @@ const ProductDetails = () => {
           <motion.button
            whileTap={{ scale: 0.8 }}        
            transition={{ duration: 0.3}}
-          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl' >Buy Now</motion.button>             
+          type='button' 
+          className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
+          >
+            Buy Now
+          </motion.button>             
           <motion.button 
            whileTap={{ scale: 0.8 }}        
            transition={{ duration: 0.3}}
-          type='button' className=' bg-red-500 text-white m-2 p-2 rounded-xl'  >Add To Cart</motion.button>             
+          type='button' 
+          onClick={cartProduct}
+          className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
+           >
+            Add To Cart
+          </motion.button>             
         </div>
         <div className='mb-4'>
         <hr />

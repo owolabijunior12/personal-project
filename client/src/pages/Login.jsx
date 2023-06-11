@@ -8,7 +8,12 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { useLocation, useNavigate,Link } from 'react-router-dom';
-import { Signin } from '../api';
+import { Signin, validateUser } from '../api';
+import { actionType } from '../Context/reducer';
+import {getAuth, GoogleAuthProvider, signInWithPopup}from 'firebase/auth'
+import { useStateValue } from '../Context/StateProvider';
+import { app } from '../configuration/firebase.configuration';
+import { FcGoogle } from 'react-icons/fc';
 const Login = ({useAuth, history,setAuth}) => {
       const navigate = useNavigate();
       const [username,setUsername] =useState("");
@@ -30,12 +35,12 @@ const Login = ({useAuth, history,setAuth}) => {
             });
             const  handleSubmit = async (e)=>{
              e.preventDefault();
-                  if ( !username  || !password ) {
+                  if ( username  || password ) {
                         toast.error(`You need to fill up all your details`);
                     }
 
                           try {
-                      const response = await Signin(username,password); // Serialize `data` as JSON                      
+                      const response = await Signin(username,password); 
                       console.log(response);
                       toast.success("Logged in successfully");
                       window.localStorage.setItem("auth", "true"); 
@@ -47,17 +52,51 @@ const Login = ({useAuth, history,setAuth}) => {
                       toast.error(`An error occurred during log in.`);
                     }
 
-            // if ( password===authPassword && email===authEmail  ){                  
-            //       navigate("/home");
-            //       
-            //       window.localStorage.setItem("auth", "true");
-            // }else{
-            //       navigate("/login");
-            //       toast.error("usernme or password is incorrect")
-            // }
+           
                                                       
             }
+            const firebaseAuth = getAuth(app)
+            const provider =new GoogleAuthProvider();
             
+            const [{user},  dispatch] = useStateValue();
+            
+            const loginWithGoogle = async ()=>{
+                  await signInWithPopup(firebaseAuth, provider)
+                  .then((userCred)=>{
+                    if(userCred){
+                      setAuth(true);
+                      window.localStorage.setItem("auth", "true");
+                      firebaseAuth.onAuthStateChanged((userCred)=>{
+                        if(userCred){
+            
+                          userCred.getIdToken().then((token)=>{
+                            console.log(token)
+                            
+                              validateUser({token}.then((data)=>{
+                                  dispatch({
+                                    type : actionType.SET_USER,
+                                    user: data
+                                  })
+                              }))
+            
+                          })
+                          console.log(userCred);
+                          navigate('/',{replace:true})
+                        }else{
+                          setAuth(false);
+                          dispatch({
+                            type : actionType.SET_USER,
+                            user: null
+                          })
+                          navigate("/")
+                        }
+                      })
+                    }
+                      
+                  })
+            
+                  console.log("iboytech got it");
+                }
 
             const {search} = useLocation();
             const redirectInUrl = new URLSearchParams(search).get('redirect');
@@ -91,13 +130,18 @@ const Login = ({useAuth, history,setAuth}) => {
                               <button onClick={handleSubmit}> Login</button>
                         
                               
-                        <a href="#" target="_blank" rel="noopener noreferrer">
+                        <Link href="#" target="_blank" rel="noopener noreferrer">
                         Forgot Password
-                        </a>
-                        <a href="http://" target="_blank" rel="noopener noreferrer">Don't have an account yet</a>
-                        <Link to={`/signup?redirect=${redirect}`}>SignUp</Link>
+                        </Link >
+                          <div className='flex gap-1'>
+                                    <Link href="http://" target="_blank" rel="noopener noreferrer" name="newUser">Don't have an account yet</Link>
+                                    <label htmlFor="newUser" className='underline font-bold text-2xl   text-white'><Link to={`/signup?redirect=${redirect}`}>SignUp</Link></label>
+                        </div>    
                   </form>
                   
+                  <div onClick={loginWithGoogle} className=' flex m-5 items-center justify-center gap-2 p-2 rounded-md bg-red-500 cursor-pointer hover:bg-red-600 duration-100 ease-in-out transition-all' >
+                      <FcGoogle className='text-xl '/> Sigin with Google
+                  </div> 
             </div>
   </div>
   )

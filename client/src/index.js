@@ -7,9 +7,9 @@ import { StateProvider } from "./Context/StateProvider";
 import { initialState } from "./Context/initalState";
 import reducer from "./Context/reducer";
 
-import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
+const root =
+ ReactDOM.createRoot(document.getElementById("root"))
+root.render(
   <React.StrictMode>
     <Router>
       <StateProvider initialState={initialState} reducer={reducer}>

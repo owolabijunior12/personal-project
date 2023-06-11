@@ -40,7 +40,7 @@ export const ProductContainer = ({ data }) => {
             
         <motion.div
         onClick={() => navigate(`/product-details/${data._id}`)}
-        key={data._index}
+        key={data._idg}
           whileTap={{ scale: 0.8 }}
           initial={{ opacity: 0, translateX: -50 }}
           animate={{ opacity: 1, translateX: 0 }}

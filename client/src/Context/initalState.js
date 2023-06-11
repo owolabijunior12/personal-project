@@ -7,5 +7,5 @@ export const initialState = {
   filters: null,
   filterByNewOld: null,
   addToCart  : 0,
-  cart:null,
+  allCart:null,
 };

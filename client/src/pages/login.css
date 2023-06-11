@@ -17,6 +17,7 @@
     background-image: url("bg.svg");
     background-size: 2000px 1000px;
     background-position: -500px 0;
+    font-family: 'Courier New', Courier, monospace;
     color: #f9f9f9;
     font-family: "Euclid Circular A";
     animation: gradient 10s infinite alternate linear;
