@@ -18,7 +18,7 @@ const Product = () => {
       });
     }
   }, []);
-// console.log(allProduct._id);
+
   return (
     <div className='mb-3  w-full py-10'>
       <div className='flex pl-6 bg-black text-textColor text-4xl mb-7'>FootWears</div>
@@ -40,7 +40,7 @@ export const ProductContainer = ({ data }) => {
             
         <motion.div
         onClick={() => navigate(`/product-details/${data._id}`)}
-        key={data._idg}
+        key={data._id}
           whileTap={{ scale: 0.8 }}
           initial={{ opacity: 0, translateX: -50 }}
           animate={{ opacity: 1, translateX: 0 }}
@@ -50,7 +50,7 @@ export const ProductContainer = ({ data }) => {
           <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden ">
             <motion.img
               whileHover={{ scale: 1.05 }}
-              src=''
+              src={data.imageURL}
               alt="product-Image"
               className="w-full h-full bg-white rounded-lg object-cover"
             />

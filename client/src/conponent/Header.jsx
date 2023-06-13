@@ -46,18 +46,18 @@ const Header = () => {
                 isMenu&&(
                   <div className='absolute z-10 p-4  top-20 right-5 gap-4 w-275 bg-[] shadow-lg rounded-lg backdrop-blur-sm flex-col'>
                     <Link to={"/user-profile"}>
-                            <p className='text-base flex m-4   textColor hover:font-extrabold hover:text-2xl duration-150 transition-all ease-in-out'>
+                            <span className='text-base flex m-4   textColor hover:font-extrabold hover:text-2xl duration-150 transition-all ease-in-out'>
                                   {/* <AiOutlineProfile className='mr-1'/> */}
                                    Profile
-                              </p>
+                              </span>
                     </Link>
                     <Link to={"/"}>
-                            <p  className='text-baseflex m-4 justify-between textColor hover:font-extrabold hover:text-2xl  duration-150 transition-all ease-in-out'>
+                            <span  className='text-baseflex m-4 justify-between textColor hover:font-extrabold hover:text-2xl  duration-150 transition-all ease-in-out'>
                                   Track order
-                              </p>
+                              </span>
                     </Link>
                     <Link to={"/"}>
-                            <p className='text-base flex m-4 justify-between  textColor hover:font-extrabold hover:text-2xl  duration-150 transition-all ease-in-out'>
+                            <span className='text-base flex m-4 justify-between  textColor hover:font-extrabold hover:text-2xl  duration-150 transition-all ease-in-out'>
                                   Transactions 
                               </p>
                     </Link>
@@ -115,7 +115,7 @@ const Header = () => {
                         <Link to={"/user-profile"}>
                         <  div className=' flex gap-1' >
                                 <img src={profile}  className=' w-16 h-16 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />        
-                                <p className='text-4xl font-bold capitalize'> {user?.length >9?user.slice(0,11):user}... <div className='text-lg'>Admin</div></p>
+                                <p className='text-4xl font-bold capitalize'> {user?.length >9?user.slice(0,11):user}<div className='text-lg'>Admin</div></p>
                               </div>
                         </Link>         
                           

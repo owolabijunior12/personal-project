@@ -51,7 +51,7 @@ route.put("/update/id",async(req,res,next)=>{
     }
 })
 
-route.delete("/delete/:id",async(res,req)=>{
+route.delete("/delete/:id",async(res,req,next)=>{
     try {
         const product =await Product.deleteOne({id:req.params.id});
         if(!product.deletedCount){

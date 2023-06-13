@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../conponent/Header'
 import {motion} from 'framer-motion'
-import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
+// import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
 import { useParams,Link } from 'react-router-dom'
 import Footer from '../conponent/Footer'
-import { image, productData } from './DemoDatas'
-import { getOneProduct, saveNewCart } from '../api'
+import { image } from './DemoDatas'
+import { getAllCart, getOneProduct, saveNewCart } from '../api'
 import { AiFillStar, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ import { actionType } from '../Context/reducer'
 const ProductDetails = () => {
   const [cartValue, setCartValue] = useState(0);
   const { productId } = useParams();
-  const [{ product,addTCart }, dispatch] = useStateValue();
+  const [{ product,addToCart }, dispatch] = useStateValue();
 
   useEffect(() => {
     getOneProduct(productId).then((res) => {
@@ -26,14 +26,6 @@ const ProductDetails = () => {
     });
     
   }, []);
-  // useEffect(()=>{
-  //   saveNewCart(product.product_name,product.product_price,product.product_size,product.product_image,product.product_qty).then((res)=>{
-  //     dispatch({
-  //       type:actionType.SET_ADD_CART,
-  //       cart:res.dat
-  //     })
-  //   })
-  // },[])
   console.log(product)
  const cartProduct=async()=>{
   console.log("addtoCart");
@@ -53,7 +45,14 @@ const ProductDetails = () => {
         toast.error(error);
       }
  }
-   
+   useEffect(()=>{
+    getAllCart().then((res)=>{
+      dispatch({
+        type:actionType.SET_ADD_CART,
+        addToCart:res.data,
+      })
+    })
+   },[])
   return (
     <div className='w-full'>
       <Header/>
@@ -61,7 +60,7 @@ const ProductDetails = () => {
 
         <div key={product._id}  className='flex flex-col mt-28 w-full justify-center items-center'>
         <div className=' w-350 pb-2'>              
-              <img src={image} alt="" className=' w-full rounded-lg ' />              
+              <img src={product.imageURL} alt="product_image" className=' w-full rounded-lg ' />              
         </div>
         <div className='flex mb-4'>
             <div className='round rounded-full m-2 p-2 bg-textColor'></div>
@@ -91,7 +90,7 @@ const ProductDetails = () => {
           type='button' 
           className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
           >
-            Buy Now
+            Buy Now          
           </motion.button>             
           <motion.button 
            whileTap={{ scale: 0.8 }}        

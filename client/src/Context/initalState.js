@@ -6,6 +6,6 @@ export const initialState = {
   allProduct:null ,
   filters: null,
   filterByNewOld: null,
-  addToCart  : 0,
+  addToCart  : null,
   allCart:null,
 };

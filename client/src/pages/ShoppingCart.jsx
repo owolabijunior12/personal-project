@@ -10,23 +10,24 @@ import { actionType } from '../Context/reducer';
 import { useStateValue } from '../Context/StateProvider';
 
 const ShoppingCart = () => {
-  const [{ allCart }, dispatch] = useStateValue();
+  const [{ addToCart }, dispatch] = useStateValue();
   const navigate = useNavigate()
   const GoShopping=()=>{
       navigate("/home")
   }
   useEffect(()=>{
-    if(!allCart){
-        getAllCart().then((data)=>{
+    if(!addToCart){
+        getAllCart().then((res)=>{
         dispatch({
           type:actionType.SET_ADD_CART,
-          allCart:data
+          addToCart:res.addToCart
         })
-        console.log(data.addToCart);
+        console.log(res.addToCart);
       })
     }
     
   },[])
+  console.log(addToCart);
   return (
     <div className='w-full'>
       <Header />

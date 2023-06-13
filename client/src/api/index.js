@@ -114,12 +114,12 @@ export const deleteProduct = async () => {
       return null
     }
   }
-  export const saveNewCart = async (product_name,product_price,product_image,product_size,product_qty) =>{
+  export const saveNewCart = async (name,product_price,imageURL,product_size,product_qty) =>{
     try {
       const res = await axios.post(`${baseURL}api/addToCart/save`, {
-        product_name,
+        name,
         product_price,
-        product_image,
+        imageURL,
         product_size,
         product_qty
       });
