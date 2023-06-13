@@ -59,7 +59,7 @@ const Header = () => {
                     <Link to={"/"}>
                             <span className='text-base flex m-4 justify-between  textColor hover:font-extrabold hover:text-2xl  duration-150 transition-all ease-in-out'>
                                   Transactions 
-                              </p>
+                              </span>
                     </Link>
                     <Link to={"/admin-page"}>
                             <p className='text-baseflex m-4 justify-between  textColor hover:font-extrabold hover:text-2xl  duration-150 transition-all ease-in-out'>

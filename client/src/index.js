@@ -16,6 +16,5 @@ root.render(
         <App />
       </StateProvider>
     </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>  
 );

@@ -14,7 +14,7 @@ import { actionType } from '../Context/reducer'
 const ProductDetails = () => {
   const [cartValue, setCartValue] = useState(0);
   const { productId } = useParams();
-  const [{ product,addToCart }, dispatch] = useStateValue();
+  const [{ product,carts }, dispatch] = useStateValue();
 
   useEffect(() => {
     getOneProduct(productId).then((res) => {
@@ -45,14 +45,6 @@ const ProductDetails = () => {
         toast.error(error);
       }
  }
-   useEffect(()=>{
-    getAllCart().then((res)=>{
-      dispatch({
-        type:actionType.SET_ADD_CART,
-        addToCart:res.data,
-      })
-    })
-   },[])
   return (
     <div className='w-full'>
       <Header/>

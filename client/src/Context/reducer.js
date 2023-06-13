@@ -10,7 +10,7 @@ export const actionType = {
   SET_CART_QTY:"SET_CART_QTY",
   SET_CART_PRODUCT:"SET_CART_PRODUCT",
   SET_PRODUCT_INDEX:"SET_PRODUCT_INDEX",
-  SET_ADD_CART:"SET_ADD_CART"
+  SET__CARTS:"SET_CARTS"
 };
 
 const reducer = (state, action) => {
@@ -24,6 +24,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         product: action.product,
+      };
+        case actionType.SET__CARTS:
+      return {
+        ...state,
+        carts: action.carts,
       };
         case actionType.SET_CART_PRODUCT:
       return {
@@ -45,11 +50,7 @@ const reducer = (state, action) => {
           ...state,
           allUser:action.allUser
         };
-        case action.SET_ADD_CART:
-          return {
-            ...state,
-            addToCart:action.addToCart
-          };
+       
           case actionType.SET_SEARCH_TERM:
             return {
               ...state,
