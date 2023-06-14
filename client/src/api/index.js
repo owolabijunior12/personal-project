@@ -128,14 +128,16 @@ export const deleteProduct = async () => {
       return null;
     }
   }
-  export const deleteCart = async ()=>{
-    try {
-      const res = await axios.get(`${baseURL}api/addToCart/delete/:id`) ;
-      return res.data     
-    } catch (error) {
-      return null
-    }
+
+export const deleteCart = async (_id) => {
+  try {
+    const res = await axios.delete(`${baseURL}api/addToCart/delete/${_id}`);
+    return res.data;
+  } catch (error) {
+    return null;
   }
+};
+
   export const updateAddToCart = async () => {
     try {
       const res = await axios.put(`${baseURL}api/addToCart/update/:id`);

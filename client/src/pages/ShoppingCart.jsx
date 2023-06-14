@@ -4,7 +4,7 @@ import Footer from '../conponent/Footer';
 import profile from "../asset/profile.jpg"
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShopping } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import { getAllCart } from '../api';
+import { deleteCart, getAllCart } from '../api';
 import { MdDelete } from 'react-icons/md';
 import {motion} from 'framer-motion'
 import { actionType } from '../Context/reducer';
@@ -38,15 +38,15 @@ const ShoppingCart = () => {
     <div className='w-full'>
       <Header />
       <div className='flex mt-28 justify-between  flex-col my-5'>
-        {carts ? (
-          <CartCardProduct data={carts} />
-        ) : (
-          <div className='flex mt-28 flex-col justify-center items-center my-5'>
-            <AiOutlineShopping className='text-8xl border rounded-full p-4 bg-white text-textColor' />
-            <p className='font-bold text-4xl text-textColor py-2'>Your cart is empty</p>
-            <h1 className='text-textColor font-semibold py-2'>Browse our categories and discover our best deals!</h1>
-            <button type='button' className='bg-primary px-12 rounded-xl  my-10 py-2 text-2xl text-textColor' onClick={GoShopping}>Start Shopping</button>
-          </div>
+        {!carts? (
+            <div className='flex mt-28 flex-col justify-center items-center my-5'>
+               <AiOutlineShopping className='text-8xl border rounded-full p-4 bg-white text-textColor' />
+                <p className='font-bold text-4xl text-textColor py-2'>Your cart is empty</p>
+                <h1 className='text-textColor font-semibold py-2'>Browse our categories and discover our best deals!</h1>
+                <button type='button' className='bg-primary px-12 rounded-xl  my-10 py-2 text-2xl text-textColor' onClick={GoShopping}>Start Shopping</button>
+            </div>
+          ) : (
+             <CartCardProduct data={carts} />
         )}
       </div>
       <Footer />
@@ -55,14 +55,27 @@ const ShoppingCart = () => {
 };
 
 const CartCardProduct = ({ data }) => {
+  const [{ carts }, dispatch] = useStateValue();
   const addCartQty = () =>{
     console.log("add");
   }
   const minusCartQty = () =>{
     console.log("minus");
   }
+  const deleteCartItem= () =>{
+  console.log("deleted item")
+  deleteCart(data._id).then((res) => {
+    if (res) {
+      const updatedCarts = data.addToCart.filter((item) => item._id !== data._id);
+      dispatch({
+        type: actionType.SET_CARTS,
+        carts: updatedCarts,
+      })
+    }
+  })
+}
   return (
-    <div className='flex h-[80vh] justify-between border p-2 m-2 border-textColor flex-col'>
+    <div className='flex h-[80vh] justify-between rounded-2xl border p-2 m-2 border-textColor flex-col'>
        <div className='flex flex-col'>
       {data?.map((cart) => (
         <div className='flex  w-full border-textColor border p-4  my-2' key={cart._id}>
@@ -96,7 +109,8 @@ const CartCardProduct = ({ data }) => {
           <div className='flex items-center'>          
               <motion.button
               whileTap={{ scale: 0.8 }}        
-              transition={{ duration: 0.3}}                             
+              transition={{ duration: 0.3}}  
+              onClick={deleteCartItem}                           
           >
             <MdDelete className="text-red-500 text-2xl"/>          
           </motion.button>              
