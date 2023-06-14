@@ -9,7 +9,7 @@ const addToCartSchema = mongoose.Schema(
             type:Number,
             require:true
         },
-        product_image:{
+        imageURL:{
             type:String,
             require:true
         },

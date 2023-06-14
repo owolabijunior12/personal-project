@@ -10,7 +10,7 @@ export const actionType = {
   SET_CART_QTY:"SET_CART_QTY",
   SET_CART_PRODUCT:"SET_CART_PRODUCT",
   SET_PRODUCT_INDEX:"SET_PRODUCT_INDEX",
-  SET__CARTS:"SET_CARTS"
+  SET_CARTS:"SET_CARTS"
 };
 
 const reducer = (state, action) => {
@@ -25,7 +25,7 @@ const reducer = (state, action) => {
         ...state,
         product: action.product,
       };
-        case actionType.SET__CARTS:
+        case actionType.SET_CARTS:
       return {
         ...state,
         carts: action.carts,

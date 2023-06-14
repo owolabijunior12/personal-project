@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import {FaCrown}from 'react-icons/fa';
 import profile from '../asset/profile.jpg';
 import {GiShoppingCart} from "react-icons/gi"
@@ -12,8 +12,10 @@ import  useMediaQuery, { filterByNewOld, filters } from '../utils/styles'
 import { productData } from '../pages/DemoDatas';
 import { toast } from 'react-toastify';
 import {useStateValue} from '../Context/StateProvider'
+import { getAllCart } from '../api';
+import { actionType } from '../Context/reducer';
 const Header = () => {
-  const [{user},dispatch] =useStateValue();
+  const [{user,carts},dispatch] =useStateValue();
   // const navigate = useNavigate();
   const [isMenu, setIsMenu] = useState()
   const {search} = useLocation;  
@@ -24,6 +26,17 @@ const Header = () => {
   // const navbarBackground = isTopOfPage ? "" : "bg-red";
   // const userInfo= localStorage.getItem("user")
   // console.log(userInfo);
+  useEffect(() => {
+    if (!carts) {
+      getAllCart().then((data) => {
+        dispatch({
+          type: actionType.SET_CARTS,
+          carts: data.addToCart,
+        }); 
+      });
+    }
+  }, []);
+  console.log(carts?.length);
   return (
     <nav className={` bg-black z-40  w-full fixed top-0 py-6 text-textColor shadow-lg shadow-textColor`}>
     <div className="flex  justify-between  w-full">  
@@ -36,7 +49,7 @@ const Header = () => {
       {isDesktop ? (
         <div className="flex justify-between gap-16 font-opensans text-sm font-semibold">
              <div className='relative scale-75 flex '>      
-                 <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>0</span>                                   
+                 <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>{carts?.length}</span>                                   
                     <p className='mx-5  text-textColor text-6xl' > <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p>                                                                    
                     <img 
                       onClick={() => setIsMenu(!isMenu)}                                        
@@ -85,7 +98,7 @@ const Header = () => {
       ) : (  
         
         <div className='relative scale-75 flex '>      
-                             <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>0</span>                                   
+                             <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>{carts?.length}</span>                                   
                     <p className='mx-5  text-textColor text-5xl'> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p> 
           <HiMenu onClick={() => setIsMenuToggled(!isMenuToggled)} className='text-4xl text-white'/>      
         </div>      

@@ -7,7 +7,7 @@ route.post("/save", async (req, res) => {
       const newAddToCart = await AddToCart.create({
         name: req.body.name,
         product_price: req.body.product_price,
-        product_Image: req.body.product_Image,
+        imageURL: req.body.imageURL,
         product_size: req.body.product_size,
         product_qty: req.body.product_qty
       });
@@ -32,11 +32,11 @@ route.get("/getOne/:id", async (req, res, next) => {
   });
   route.put("/update/:id", async (req, res, next) => {
     try {
-      const { name, product_price, product_Image, product_size, product_qty } = req.body;
+      const { name, product_price, imageURL, product_size, product_qty } = req.body;
       const addToCart = await AddToCart.findByIdAndUpdate(req.params.id, {
         name,
         product_price,
-        product_Image,
+        imageURL,
         product_size,
         product_qty
       }, { new: true });

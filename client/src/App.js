@@ -15,13 +15,13 @@ import AdminPageAddProduct from './pages/AdminPageAddProduct';
 import {useStateValue} from './Context/StateProvider'
 import { getAuth } from 'firebase/auth'
 import { actionType } from './Context/reducer';
-import { validateUser } from './api';
+import { getAllCart, validateUser } from './api';
 import { app } from './configuration/firebase.configuration';
 
 function App() {
   const firebaseAuth = getAuth(app)
   const nagivate = useNavigate();
-  const [{user}, dispatch] = useStateValue();
+  const [{user,carts}, dispatch] = useStateValue();
   const [auth,setAuth] = useState(false || window.localStorage.getItem("auth")===true);
   useEffect(()=>{
     firebaseAuth.onAuthStateChanged((userCred)=>{
@@ -49,6 +49,17 @@ function App() {
     })
 },[])
 
+useEffect(() => {
+  if (!carts) {
+    getAllCart().then((data) => {
+      dispatch({
+        type: actionType.SET_CARTS,
+        carts: data.addToCart,
+      }); 
+    });
+  }
+}, []);
+console.log(carts?.length);
   return (
     <div className='min-w-[300px] h-auto  '>       
            <ToastContainer
