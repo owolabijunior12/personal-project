@@ -66,11 +66,12 @@ const CartCardProduct = ({ data }) => {
   console.log("deleted item")
   deleteCart(data._id).then((res) => {
     if (res) {
-      const updatedCarts = data.addToCart.filter((item) => item._id !== data._id);
+      const updatedCarts = data.addToCart.filter((item) => item._id === data._id);
       dispatch({
         type: actionType.SET_CARTS,
         carts: updatedCarts,
       })
+      console.log(updatedCarts);
     }
   })
 }

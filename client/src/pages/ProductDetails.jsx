@@ -27,6 +27,7 @@ const ProductDetails = () => {
     
   }, []);
   console.log(product)
+
  const cartProduct=async()=>{
   console.log("addtoCart");
       try {
@@ -37,7 +38,7 @@ const ProductDetails = () => {
           product.product_size,
           product.product_quantity
           );
-        localStorage.setItem("addToCartLocalStorage", addCart);
+        localStorage.setItem("addToCartLocalStorage", product);
         console.log(addCart);
         toast.success(`${product.name} is added to cart`);
       } catch (error) {
