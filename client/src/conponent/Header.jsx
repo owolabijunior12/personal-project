@@ -95,8 +95,7 @@ const Header = () => {
                 )
               }
         </div>
-      ) : (  
-        
+      ) : (          
         <div className='relative scale-75 flex '>      
                              <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>{carts?.length}</span>                                   
                     <p className='mx-5  text-textColor text-5xl'> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p> 
@@ -178,3 +177,8 @@ const Header = () => {
 }
 
 export default Header
+
+
+
+
+

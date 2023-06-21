@@ -45,7 +45,7 @@ export const ProductContainer = ({ data }) => {
           initial={{ opacity: 0, translateX: -50 }}
           animate={{ opacity: 1, translateX: 0 }}
           transition={{ duration: 0.3, delay: index * 0.1 }}
-          className="relative m-2 w-40 min-w-210  py-4 cursor-pointer hover:border-4 hover:border-textColor  bg-black shadow-md rounded-lg flex flex-col items-center" 
+          className="relative m-2 w-40 min-w-210  p-4  cursor-pointer hover:border-4 hover:border-textColor  bg-black shadow-md rounded-lg flex flex-col items-center" 
         >
           <div className="w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden ">
             <motion.img
@@ -56,7 +56,7 @@ export const ProductContainer = ({ data }) => {
             />
           </div>
   
-          <p className="text-base text-textColor font-semibold my-2">            
+          <p className="text-base px-2 text-textColor font-semibold my-2">            
             <span className="block text-3xl  my-1">{data.name}</span>
             <span className="block text-lg  my-1">${data.product_price}</span>
             <p className='flex'>

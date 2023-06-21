@@ -19,9 +19,9 @@ const Login = ({useAuth, history,setAuth}) => {
       const [username,setUsername] =useState("");
       const [password,setPassword] = useState("")
       // const [values,setValues] =useState()
-      const authEmail = localStorage.getItem("email")
+      // const authEmail = localStorage.getItem("email")
       // const authUsername = localStorage.getItem("username")
-      const authPassword = localStorage.getItem("password")       
+      // const authPassword = localStorage.getItem("password")       
       
       const notify = () => toast.success(`Logged in successfully`, {
             position: "top-right",

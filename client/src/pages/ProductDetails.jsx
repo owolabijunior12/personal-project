@@ -38,8 +38,18 @@ const ProductDetails = () => {
           product.product_size,
           product.product_quantity
           );
-        localStorage.setItem("addToCartLocalStorage", product);
-        console.log(addCart);
+        const cartArray = []
+        const addCartLs =  (
+          product.name,
+          product.product_price,
+          product.imageURL,
+          product.product_size,
+          product.product_quantity
+          );
+        
+        localStorage.setItem("addToCartLocalStorage", cartArray);
+        // console.log(addCart);
+        console.log(cartArray);
         toast.success(`${product.name} is added to cart`);
       } catch (error) {
         console.log(error);
