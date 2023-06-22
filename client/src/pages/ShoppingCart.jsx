@@ -17,6 +17,7 @@ const ShoppingCart = () => {
   const GoShopping = () => {
     navigate("/home");
   };
+
  useEffect(()=>{
 
  },[])
@@ -32,13 +33,13 @@ const ShoppingCart = () => {
     }
   }, []);
 
-  console.log(carts?.length);
+  // 
 
   return (
     <div className='w-full'>
       <Header />
       <div className='flex mt-28 justify-between  flex-col my-5'>
-        {!carts? (
+        {carts===0? (
             <div className='flex mt-28 flex-col justify-center items-center my-5'>
                <AiOutlineShopping className='text-8xl border rounded-full p-4 bg-white text-textColor' />
                 <p className='font-bold text-4xl text-textColor py-2'>Your cart is empty</p>
@@ -75,11 +76,12 @@ const CartCardProduct = ({ data }) => {
     }
   })
 }
+const navigate = useNavigate();
   return (
-    <div className='flex h-[80vh] justify-between rounded-2xl border p-2 m-2 border-textColor flex-col'>
+    <div className='flex h-auto justify-between rounded-2xl border p-2 m-2 border-textColor flex-col'>
        <div className='flex flex-col'>
       {data?.map((cart) => (
-        <div className='flex  w-full border-textColor border p-4  my-2' key={cart._id}>
+        <div onClick={() => navigate(`/product-details/${cart._id}`)}  className='flex  w-full border-textColor border p-4  my-2' key={cart._id}>
           <div className='flex justify-between w-full gap-3 items-center'>
             <div className='flex gap-3'>
                <img src={cart.imageURL} className='h-20 w-36 rounded-lg' alt="" />
