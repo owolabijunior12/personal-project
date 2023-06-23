@@ -149,7 +149,7 @@ export const DisabledButton = () => {
   };
 
   const saveProduct = () => {
-    if (!productImage || !productName) {
+    if (!productImage || !productName || !brand || !description || !productModelNumber||!productColor || !productPrice || !productType ||!productQuantity||!productSerialNumber ||!productWeight ||!productStatus || !productSize) {
     toast.warning("Required fields are missing");    
     } else {
       setIsProduct(true);
@@ -181,7 +181,15 @@ export const DisabledButton = () => {
       setProductName("");
       setProductPrice("");
       setDescription("");
-      
+      setBrand("");
+      setProductType("");
+      setProductColor("");
+      setProductWeight("");
+      setProductSize("");
+      setProductQuantity("");
+      setProductStatus("")
+      setProductModelNumber("");    
+      setProductSerialNumber("")
     }
   };
 
@@ -189,7 +197,7 @@ export const DisabledButton = () => {
     <div className="flex items-center justify-evenly w-full flex-wrap">
       <Header/>
       <h1 className="text-4xl font-bold mt-32"> Product Details</h1>
-      <div className="bg-primary my-5 backdrop-blur-md  w-full lg:w-225 h-225 rounded-md border-2 border-dotted border-textColor cursor-pointer">
+      <div className="bg-primary my-5 mx-9 backdrop-blur-md bg-auto  w-full h-510 rounded-md border-2 border-dotted border-textColor cursor-pointer">
         {isProduct && <ImageLoader progress={progress} />}
         {!isProduct && (
           <>
@@ -205,7 +213,7 @@ export const DisabledButton = () => {
                 <img
                   src={productImage}
                   alt="uploaded_image"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full bg-cover bg-center object-cover"
                 />
                 <button
                   type="button"
@@ -222,27 +230,104 @@ export const DisabledButton = () => {
         )}
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-4 ">
-      <h1 className="text-4xl"> Product Details</h1>
+      <div className="flex flex-col w-full mx-9 items-center justify-center gap-4 ">    
         <input
           type="text"
           placeholder="Product Name"
-          className="w-full lg:w-300 p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
         />
-
-        <div className="w-full lg:w-300 flex items-center justify-center lg:justify-end">
+        <input
+          type="text"
+          placeholder="Product Price"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productPrice}
+          onChange={(e) => setProductPrice(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Product Description"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+         <input
+          type="text"
+          placeholder="Product Description"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+        />
+         <input
+          type="text"
+          placeholder="Product Type"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productType}
+          onChange={(e) => setProductType(e.target.value)}
+        />        
+        <input
+          type="text"
+          placeholder="Product Size"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productSize}
+          onChange={(e) => setProductSize(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Product Color"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productColor}
+          onChange={(e) => setProductColor(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Product Weight"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productWeight}
+          onChange={(e) => setProductWeight(e.target.value)}
+        />
+         <input
+          type="text"
+          placeholder="Product Quality"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productQuantity}
+          onChange={(e) => setProductQuantity(e.target.value)}
+        />
+         <input
+          type="text"
+          placeholder="Product Status"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productStatus}
+          onChange={(e) => setProductStatus(e.target.value)}
+        />
+         <input
+          type="text"
+          placeholder="Product Model Number"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productModelNumber}
+          onChange={(e) => setProductModelNumber(e.target.value)}
+        />
+         <input
+          type="text"
+          placeholder="Product Serial Number"
+          className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
+          value={productSerialNumber}
+          onChange={(e) => setProductSerialNumber(e.target.value)}
+        />
+        <div className="w-full  flex items-center justify-center lg:justify-end">
           {isProduct ? (
             <DisabledButton />
-          ) : (
-            <motion.button
-              whileTap={{ scale: 0.75 }}
-              className="px-8 py-2 rounded-md border-textColor text-textColor bg-primary border hover:shadow-lg"
-              onClick={saveProduct}
-            >
-              Send
-            </motion.button>
+          ) : (          
+              <motion.button 
+              whileTap={{ scale: 0.8 }}        
+              transition={{ duration: 0.3}}
+             type='button' 
+             onClick={saveProduct}
+             className="px-8 py-2 rounded-md border-textColor text-textColor bg-primary border hover:shadow-lg"
+              >
+               Add To Cart
+             </motion.button> 
           )}
         </div>
       </div>
