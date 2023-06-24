@@ -125,14 +125,14 @@ export const DisabledButton = () => {
   const [progress, setProgress] = useState(0);
   const [productImage, setProductImage] = useState(null);
   const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState(0);
+  const [productPrice, setProductPrice] = useState();
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [productType, setProductType] = useState("");
   const [productColor, setProductColor] = useState("");
-  const [productWeight, setProductWeight] = useState(0);
+  const [productWeight, setProductWeight] = useState();
   const [productSize, setProductSize] = useState("");
-  const [productQuantity,setProductQuantity] = useState(0);
+  const [productQuantity,setProductQuantity] = useState();
   const [productStatus,setProductStatus] = useState("");
   const [productModelNumber,setProductModelNumber] = useState("");
   const [productSerialNumber,setProductSerialNumber] = useState("")
@@ -169,13 +169,14 @@ export const DisabledButton = () => {
         product_serial_number:productSerialNumber
       };
       SaveProduct(data).then((res) => {
-        getAllProduct().then((productData) => {
+        getAllProduct().then((product) => {
           dispatch({
             type: actionType.SET_ALL_PRODUCT,
-            productData: productData.data,
+            product: product.data,
           });
         });
       });
+      toast.success("Product Saved")
       setIsProduct(false);
       setProductImage(null);
       setProductName("");
