@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL =  "https://iboytech-e-commence-app-ttbq.onrender.com/";
+export const baseURL =  "https://iboytech-e-commence-app-ttbq.onrender.com/" ||  "http://localhost:1609/" ;
 console.log(`${baseURL}api/product/getAll`);
 
 

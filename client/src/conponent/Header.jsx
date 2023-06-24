@@ -36,7 +36,6 @@ const Header = () => {
       });
     }
   }, []);
-  console.log(carts?.length);
   return (
     <nav className={` bg-black z-40  w-full fixed top-0 py-6 text-textColor shadow-lg shadow-textColor`}>
     <div className="flex  justify-between  w-full">  

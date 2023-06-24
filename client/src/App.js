@@ -59,7 +59,6 @@ useEffect(() => {
     });
   }
 }, []);
-console.log(carts?.length);
   return (
     
     <div className='min-w-[300px] h-auto  '>       

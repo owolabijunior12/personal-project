@@ -125,14 +125,14 @@ export const DisabledButton = () => {
   const [progress, setProgress] = useState(0);
   const [productImage, setProductImage] = useState(null);
   const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState("");
+  const [productPrice, setProductPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [productType, setProductType] = useState("");
   const [productColor, setProductColor] = useState("");
-  const [productWeight, setProductWeight] = useState("");
+  const [productWeight, setProductWeight] = useState(0);
   const [productSize, setProductSize] = useState("");
-  const [productQuantity,setProductQuantity] = useState("");
+  const [productQuantity,setProductQuantity] = useState(0);
   const [productStatus,setProductStatus] = useState("");
   const [productModelNumber,setProductModelNumber] = useState("");
   const [productSerialNumber,setProductSerialNumber] = useState("")
@@ -179,14 +179,14 @@ export const DisabledButton = () => {
       setIsProduct(false);
       setProductImage(null);
       setProductName("");
-      setProductPrice("");
+      setProductPrice(0);
       setDescription("");
       setBrand("");
       setProductType("");
       setProductColor("");
-      setProductWeight("");
+      setProductWeight();
       setProductSize("");
-      setProductQuantity("");
+      setProductQuantity();
       setProductStatus("")
       setProductModelNumber("");    
       setProductSerialNumber("")
@@ -239,7 +239,7 @@ export const DisabledButton = () => {
           onChange={(e) => setProductName(e.target.value)}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Product Price"
           className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
           value={productPrice}
@@ -254,7 +254,7 @@ export const DisabledButton = () => {
         />
          <input
           type="text"
-          placeholder="Product Description"
+          placeholder="Product Brand"
           className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
@@ -281,14 +281,14 @@ export const DisabledButton = () => {
           onChange={(e) => setProductColor(e.target.value)}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Product Weight"
           className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
           value={productWeight}
           onChange={(e) => setProductWeight(e.target.value)}
         />
          <input
-          type="text"
+          type="number"
           placeholder="Product Quality"
           className="w-full  p-3 rounded-md text-base font-semibold text-textColor outline-none shadow-sm border border-textColor bg-transparent"
           value={productQuantity}
