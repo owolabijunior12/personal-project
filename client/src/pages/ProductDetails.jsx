@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../conponent/Header'
 import {motion} from 'framer-motion'
-// import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
 import { useParams,Link } from 'react-router-dom'
 import Footer from '../conponent/Footer'
 import { image } from './DemoDatas'
