@@ -7,8 +7,9 @@ const app = express();
 const cors = require("cors");
 
 app.use(bodyParser.json());
-app.use(cors()); //! Enable CORS for all routes
 
+ //! Enable CORS for all routes
+app.use(cors());
 app.get("/", (req, res) => {
   return res.json("hello iboytech to the world");
 });

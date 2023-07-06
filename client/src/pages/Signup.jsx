@@ -29,7 +29,7 @@ const handleSubmit = async (e) => {
       const response = await Signup(fullname,username,email,password);         
          localStorage.setItem("username", username)
          localStorage.setItem("email",email)
-         console.log(response);
+        //  console.log(response);
       toast.success(`Sign up successful!`);
       setTimeout(() => {
         navigate("/home");

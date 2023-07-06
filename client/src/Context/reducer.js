@@ -33,7 +33,7 @@ const reducer = (state, action) => {
         case actionType.SET_CART_PRODUCT:
       return {
         ...state,
-        product: action.product,
+        carts: action.carts,
       };
       case actionType.SET_CART_QTY:
       return {

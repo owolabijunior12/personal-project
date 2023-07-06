@@ -59,7 +59,7 @@ router.post("/signin", async (req, res, next) => {
     if (!email || !password) {
       throw new Error("Email and password are required");
     }
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       throw new Error("Invalid credentials");
     }

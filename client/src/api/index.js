@@ -56,6 +56,16 @@ export const SaveProduct = async () => {
       return null;
     }
   };
+  export const getAllProduct = async () => {
+      try {
+        const res = await axios.get(`${baseURL}api/product/getAll`);
+        // console.log(res?.data)
+        return res.data;
+    
+      } catch (error) {
+        return null;
+      }
+    };
   export const validateUser = async (token) => {
     try {
       const res = await axios.get(`${baseURL}api/user/login`, {
@@ -71,16 +81,6 @@ export const SaveProduct = async () => {
 export const updateProduct = async () => {
     try {
       const res = await axios.put(`${baseURL}api/product/getOne/:id`);
-      return res.data;
-  
-    } catch (error) {
-      return null;
-    }
-  };
-export const getAllProduct = async () => {
-    try {
-      const res = await axios.get(`${baseURL}api/product/getAll`);
-      // console.log(res?.data)
       return res.data;
   
     } catch (error) {

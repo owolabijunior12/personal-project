@@ -125,14 +125,14 @@ export const DisabledButton = () => {
   const [progress, setProgress] = useState(0);
   const [productImage, setProductImage] = useState(null);
   const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState();
+  const [productPrice, setProductPrice] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [productType, setProductType] = useState("");
   const [productColor, setProductColor] = useState("");
   const [productWeight, setProductWeight] = useState();
   const [productSize, setProductSize] = useState("");
-  const [productQuantity,setProductQuantity] = useState();
+  const [productQuantity,setProductQuantity] = useState("");
   const [productStatus,setProductStatus] = useState("");
   const [productModelNumber,setProductModelNumber] = useState("");
   const [productSerialNumber,setProductSerialNumber] = useState("")
@@ -180,14 +180,14 @@ export const DisabledButton = () => {
       setIsProduct(false);
       setProductImage(null);
       setProductName("");
-      setProductPrice(0);
+      setProductPrice("");
       setDescription("");
       setBrand("");
       setProductType("");
       setProductColor("");
-      setProductWeight();
+      setProductWeight("");
       setProductSize("");
-      setProductQuantity();
+      setProductQuantity("");
       setProductStatus("")
       setProductModelNumber("");    
       setProductSerialNumber("")

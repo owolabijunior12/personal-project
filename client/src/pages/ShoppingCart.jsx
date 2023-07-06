@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import  Header from "../conponent/Header"
 import Footer from '../conponent/Footer';
-import profile from "../asset/profile.jpg"
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShopping } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { deleteCart, getAllCart } from '../api';
 import { MdDelete } from 'react-icons/md';
 import {motion} from 'framer-motion'
+
 import { actionType } from '../Context/reducer';
 import { useStateValue } from '../Context/StateProvider';
 
@@ -17,29 +17,13 @@ const ShoppingCart = () => {
   const GoShopping = () => {
     navigate("/home");
   };
-
- useEffect(()=>{
-
- },[])
-  useEffect(() => {
-    if (!carts) {
-      getAllCart().then((data) => {
-        dispatch({
-          type: actionType.SET_CARTS,
-          carts: data.addToCart,
-        });
-        console.log(data.addToCart);
-      });
-    }
-  }, []);
-
-  // 
+   const cartProducts =    localStorage.getItem("cart");
 
   return (
     <div className='w-full'>
       <Header />
       <div className='flex mt-28 justify-between  flex-col my-5'>
-        {carts===0? (
+        {!cartProducts? (
             <div className='flex mt-28 flex-col justify-center items-center my-5'>
                <AiOutlineShopping className='text-8xl border rounded-full p-4 bg-white text-textColor' />
                 <p className='font-bold text-4xl text-textColor py-2'>Your cart is empty</p>
@@ -47,7 +31,7 @@ const ShoppingCart = () => {
                 <button type='button' className='bg-primary px-12 rounded-xl  my-10 py-2 text-2xl text-textColor' onClick={GoShopping}>Start Shopping</button>
             </div>
           ) : (
-             <CartCardProduct data={carts} />
+             <CartCardProduct key={cartProducts} data={cartProducts} />
         )}
       </div>
       <Footer />
@@ -56,26 +40,43 @@ const ShoppingCart = () => {
 };
 
 const CartCardProduct = ({ data }) => {
+  const cartitems =localStorage.getItem("cart");
   const [{ carts }, dispatch] = useStateValue();
+  // const navigates = useNavigate();
+  
+useEffect(()=>{
+ if (!carts) {
+    dispatch({
+      type:actionType.SET_CART_PRODUCT,
+        carts:cartitems
+    })
+    console.log(carts);
+ }
+},[])
+  
   const addCartQty = () =>{
-    console.log("add");
-  }
-  const minusCartQty = () =>{
-    console.log("minus");
-  }
-  const deleteCartItem= () =>{
-  console.log("deleted item")
-  deleteCart(data._id).then((res) => {
-    if (res) {
-      const updatedCarts = data.addToCart.filter((item) => item._id === data._id);
-      dispatch({
-        type: actionType.SET_CARTS,
-        carts: updatedCarts,
-      })
-      console.log(updatedCarts);
-    }
-  })
+    const cartitemsId = cartitems.id
+   let cartitemsQty = cartitems.productQty
+   if(cartitemsId === data.id){
+    return cartitemsQty++
+   }
 }
+  const minusCartQty = () =>{    
+    const cartitemsId = cartitems.id
+   let cartitemsQty = cartitems.productQty
+   if(cartitemsId === data.id){
+    return cartitemsQty++
+   }
+}
+ const deleteCartItem = () =>{
+  const cartitemsId = cartitems.id
+  if(cartitemsId=== data.id){
+    localStorage.removeItem()
+  }
+ }
+
+
+
 const navigate = useNavigate();
   return (
     <div className='flex h-auto justify-between rounded-2xl border p-2 m-2 border-textColor flex-col'>

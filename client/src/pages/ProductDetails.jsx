@@ -11,11 +11,12 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useStateValue } from '../Context/StateProvider'
 import { actionType } from '../Context/reducer'
+
+
 const ProductDetails = () => {
   const [cartValue, setCartValue] = useState(0);
   const { productId } = useParams();
   const [{ product,carts }, dispatch] = useStateValue();
-
   useEffect(() => {
     getOneProduct(productId).then((res) => {
       dispatch({
@@ -27,35 +28,23 @@ const ProductDetails = () => {
     
   }, []);
   console.log(product)
-
- const cartProduct=async()=>{
-  console.log("addtoCart");
-      try {
-        const addCart = await saveNewCart (
-          product.name,
-          product.product_price,
-          product.imageURL,
-          product.product_size,
-          product.product_quantity
-          );
-        const cartArray = []
-        const addCartLs =  (
-          product.name,
-          product.product_price,
-          product.imageURL,
-          product.product_size,
-          product.product_quantity
-          );
-        
-        localStorage.setItem("addToCartLocalStorage", cartArray);
-        // console.log(addCart);
-        console.log(cartArray);
-        toast.success(`${product.name} is added to cart`);
-      } catch (error) {
-        console.log(error);
-        toast.error(error);
-      }
- }
+  const productLocalstorage = () =>{
+    try {
+      let cartSave = ({
+        id:productId,
+        name:product.name,
+        productPrice:product.product_price,
+        imageURL:product.imageURL,
+        productSize:product.product_size,
+        productQty:1,
+      })
+      localStorage.setItem("cart",cartSave);
+      toast.success(`${product.name} is added to cart`);         
+  } catch (error) {
+    console.log(error);
+    toast.error(error); 
+  }
+} 
   return (
     <div className='w-full'>
       <Header/>
@@ -95,15 +84,7 @@ const ProductDetails = () => {
           >
             Buy Now          
           </motion.button>             
-          <motion.button 
-           whileTap={{ scale: 0.8 }}        
-           transition={{ duration: 0.3}}
-          type='button' 
-          onClick={cartProduct}
-          className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
-           >
-            Add To Cart
-          </motion.button>             
+          .            
         </div>
         <div className='mb-4'>
         <hr />

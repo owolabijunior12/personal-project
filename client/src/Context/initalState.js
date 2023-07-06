@@ -1,10 +1,10 @@
 export const initialState = {
   user: null,
   product:null,
+  allProduct:null ,
   carts:null,
   searchTerm: "",
   filterTerm: "all",
-  allProduct:null ,
   filters: null,
   filterByNewOld: null, 
 };
