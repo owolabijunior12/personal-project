@@ -7,6 +7,7 @@ import { image } from './DemoDatas'
 import { getAllCart, getOneProduct, saveNewCart } from '../api'
 import { AiFillStar, AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'
 import {  toast } from 'react-toastify';
+import { PaystackButton } from 'react-paystack';
 import 'react-toastify/dist/ReactToastify.css';
 import { useStateValue } from '../Context/StateProvider'
 import { actionType } from '../Context/reducer'
@@ -26,6 +27,7 @@ const ProductDetails = () => {
     });
     
   }, []);
+  
   console.log(product)
   const productLocalstorage = () =>{
     try {
@@ -44,6 +46,34 @@ const ProductDetails = () => {
     toast.error(error); 
   }
 } 
+let Price;
+if(product){
+  Price=product.product_price
+}
+console.log(Price);
+const config = {
+  reference: new Date().getTime().toString(),
+  email: 'optimaltrend247@gmail.com',
+  amount: Price*100,//product price should be replaced
+  publicKey: 'pk_live_de8199da4f8357b25e03941becd8aaa024dacf52',
+};
+
+const handlePaystackSuccessAction = (reference) => {
+  console.log('Payment success');
+  // handleSubmit();
+  console.log(reference);
+};
+
+const handlePaystackCloseAction = () => {
+  console.log('Payment dialog closed');
+};
+
+const componentProps = {
+  ...config,
+  text: 'Invest',
+  onSuccess: handlePaystackSuccessAction,
+  onClose: handlePaystackCloseAction,
+};
   return (
     <div className='w-full'>
       <Header/>
@@ -82,8 +112,8 @@ const ProductDetails = () => {
           className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
           >
             Buy Now          
-          </motion.button>             
-          .            
+          </motion.button>                        
+          <PaystackButton {...componentProps} />
         </div>
         <div className='mb-4'>
         <hr />

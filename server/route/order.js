@@ -9,7 +9,8 @@ route.post("/save", async (req, res) => {
         product_price: req.body.product_price,
         imageURL: req.body.imageURL,
         product_size: req.body.product_size,
-        product_qty: req.body.product_qty
+        product_qty: req.body.product_qty,
+        userId: req.body.userId
       });
       res.status(200).send({ success: true, order: newOrder });
     } catch (error) {

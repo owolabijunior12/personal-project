@@ -20,6 +20,10 @@ const addToCartSchema = mongoose.Schema(
         product_qty:{
             type:Number,
             require:true
+        },
+        userId:{
+            type:String,
+            require:true
         }        
     },
     {timestamps:true}

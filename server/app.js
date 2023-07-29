@@ -14,9 +14,7 @@ app.get("/", (req, res) => {
   return res.json("hello iboytech to the world");
 });
 
-//! Route for handling price-related requests
-const priceRoute = require("./route/price");
-app.use("/api/price/", priceRoute);
+
 
 //! Route for handling product-related requests
 const productRoute = require("./route/product");
@@ -26,9 +24,7 @@ app.use("/api/product/", productRoute);
 const userRoute = require("./route/user");
 app.use("/api/user/", userRoute);
 
-//! Route for handling addToCart-related requests
-const addToCartRoute = require("./route/addToCart");
-app.use("/api/addToCart/", addToCartRoute);
+
 
 try {
   //! Connect to MongoDB database

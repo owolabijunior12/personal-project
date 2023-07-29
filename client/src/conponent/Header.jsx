@@ -31,7 +31,7 @@ const Header = () => {
       getAllCart().then((data) => {
         dispatch({
           type: actionType.SET_CARTS,
-          carts: data.addToCart,
+          carts: data
         }); 
       });
     }
