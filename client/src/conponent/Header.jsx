@@ -26,16 +26,17 @@ const Header = () => {
   // const navbarBackground = isTopOfPage ? "" : "bg-red";
   // const userInfo= localStorage.getItem("user")
   // console.log(userInfo);
-  useEffect(() => {
-    if (!carts) {
-      getAllCart().then((data) => {
-        dispatch({
-          type: actionType.SET_CARTS,
-          carts: data
-        }); 
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!carts) {
+  //     getAllCart().then((data) => {
+  //       dispatch({
+  //         type: actionType.SET_CARTS,
+  //         carts: data
+  //       }); 
+  //     });
+  //   }
+  // }, []);
+  const cartProducts =   JSON.parse(localStorage.getItem("cart"));
   return (
     <nav className={` bg-black z-40  w-full fixed top-0 py-6 text-textColor shadow-lg shadow-textColor`}>
     <div className="flex  justify-between  w-full">  
@@ -96,7 +97,7 @@ const Header = () => {
         </div>
       ) : (          
         <div className='relative scale-75 flex '>      
-                             <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>{carts?.length}</span>                                   
+                             <span className='absolute -top-2 left-12 rounded-full bg-red-500 p-0.25 px-2 text-lg text-red-50'>{cartProducts?.length}</span>                                   
                     <p className='mx-5  text-textColor text-5xl'> <small ><Link to={`/shoppingCart?redirect=${redirect}`}>  <GiShoppingCart /></Link></small>  </p> 
           <HiMenu onClick={() => setIsMenuToggled(!isMenuToggled)} className='text-4xl text-white'/>      
         </div>      

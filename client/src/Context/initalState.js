@@ -2,7 +2,7 @@ export const initialState = {
   user: null,
   product:null,
   allProduct:null ,
-  carts:null,
+  carts:[],
   searchTerm: "",
   filterTerm: "all",
   filters: null,

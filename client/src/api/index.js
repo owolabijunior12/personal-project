@@ -39,9 +39,37 @@ export const logOut = async () => {
     return null;
   }
 };
-export const SaveProduct = async () => {
+export const SaveProduct = async ( 
+  name,
+  imageURL,
+  product_price,
+  description,
+  brand,
+  product_type,
+  product_size,
+  product_color,
+  product_weight,
+  Product_quantity,
+  product_status,
+  product_model_number,
+  product_serial_number
+  ) => {
     try {
-      const res = await axios.post(`${baseURL}api/product/save`);
+      const res = await axios.post(`${baseURL}api/product/save`,{
+        name,
+        imageURL,
+        product_price,
+        description,
+        brand,
+        product_type,
+        product_size,
+        product_color,
+        product_weight,
+        Product_quantity,
+        product_status,
+        product_model_number,
+        product_serial_number
+      });
       return res.data;
   
     } catch (error) {

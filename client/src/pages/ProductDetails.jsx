@@ -39,21 +39,30 @@ const ProductDetails = () => {
         productSize: product.product_size,
         productQty: 1,
       };
-
-      const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-      existingCart.push(cartSave);
-      // localStorage.setItem("cart", JSON.stringify(existingCart));
+      let existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  
+      // Check if the product is already in the cart
+      const existingProduct = existingCart.find((item) => item.id === productId);
+  
+      if (existingProduct) {        
+        existingProduct.productQty += 1;
+      } else {      
+        existingCart.push(cartSave);
+      }
+  
+      localStorage.setItem("cart", JSON.stringify(existingCart));
       dispatch({
         type: actionType.SET_CARTS,
         carts: existingCart,
       });
-      toast.success(`${product.name} is added to cart`);
-      console.log("Cart Data in localStorage:", existingCart); 
+      toast.success(` ₦{product.name} is added to cart`);
+      console.log("Cart Data in localStorage:", existingCart);
     } catch (error) {
       console.log(error);
       toast.error("Failed to add to cart");
     }
   };
+  
   
 let Price;
 if(product){
@@ -62,9 +71,9 @@ if(product){
 
 const config = {
   reference: new Date().getTime().toString(),
-  email: 'optimaltrend247@gmail.com',
+  email:'owolabijunior12@gmail.com',
   amount: Price*100,//product price should be replaced
-  publicKey: 'pk_live_de8199da4f8357b25e03941becd8aaa024dacf52',
+  publicKey: 'sk_test_e501c092502cd87640561fdaee143f4a0cfb77e1'
 };
 
 const handlePaystackSuccessAction = (reference) => {
@@ -102,7 +111,7 @@ const componentProps = {
         <div  className='relative flex  min-w-160 p-6   cursor-pointer text-textColor   bg-primary m-4  shadow-md rounded-lg flex-col'>
           <div className='bg-red-500 w-24 rounded-sm text-center text-white   m-1'>Free Delivery</div>
           <h1 className='flex justify-start text-4xl mr-52 text-textColor font-extrabold mb-4'>{product.name}</h1>
-          <p className='text-2xl mb-2'>${product.product_price}<span className=' text-red-500 text-xs'>save up 20%</span></p>
+          <p className='text-2xl mb-2'> ₦{product.product_price}<span className=' text-red-500 text-xs'>save up 20%</span></p>
           <div className='flex text-center' >
             <AiFillStar  className='text-sm'/>
             <AiFillStar  className='text-sm'/>
@@ -262,7 +271,7 @@ const componentProps = {
                        </p>
                        <p className="text-base text-textColor items-center font-semibold ">
                          
-                         <span className=" text-sm text-textColor my-1"> ${product.product_price} </span>
+                         <span className=" text-sm text-textColor my-1">  ₦{product.product_price} </span>
                        </p>                                           
                  </div>
              
@@ -309,7 +318,7 @@ const componentProps = {
                        </p>
                        <p className="text-base text-textColor items-center font-semibold ">
                          
-                         <span className=" text-sm text-textColor my-1"> ${product.product_price} </span>
+                         <span className=" text-sm text-textColor my-1">  ₦{product.product_price} </span>
                        </p>                                           
                  </div>
              

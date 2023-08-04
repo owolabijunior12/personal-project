@@ -48,17 +48,18 @@ function App() {
       }
     })
 },[])
-
+const cartProducts =   JSON.parse(localStorage.getItem("cart"));
 useEffect(() => {
   if (!carts) {
     getAllCart().then((data) => {
       dispatch({
         type: actionType.SET_CARTS,
-        carts: data.addToCart,
+        carts:cartProducts  ,
       }); 
     });
   }
 }, []);
+console.log(carts);
   return (
     
     <div className='min-w-[300px] h-auto  '>       

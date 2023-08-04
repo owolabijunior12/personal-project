@@ -13,25 +13,32 @@ import { useStateValue } from '../Context/StateProvider';
 const ShoppingCart = () => {
   const [{ carts }, dispatch] = useStateValue();
   const navigate = useNavigate();
+const cartProducts =   JSON.parse(localStorage.getItem("cart"));
 
   const GoShopping = () => {
-    navigate('/home');
+    navigate("/home");
   };  
+  useEffect(() => {
+    if (!carts) {      
+        dispatch({
+          type: actionType.SET_CARTS,
+          carts:cartProducts  ,
+        });       
+    }
+  }, []);
   return (
     <div className='w-full'>
       <Header />
-      <div className='flex mt-28 justify-between flex-col my-5'>
-        {!carts ? (
-          <div className='flex mt-28 flex-col justify-center items-center my-5'>
-            <AiOutlineShopping className='text-8xl border rounded-full p-4 bg-white text-textColor' />
-            <p className='font-bold text-4xl text-textColor py-2'>Your cart is empty</p>
-            <h1 className='text-textColor font-semibold py-2'>Browse our categories and discover our best deals!</h1>
-            <button type='button' className='bg-primary px-12 rounded-xl my-10 py-2 text-2xl text-textColor' onClick={GoShopping}>
-              Start Shopping
-            </button>
-          </div>
-        ) : (
-          <CartCardProduct data={carts} />
+      <div className='flex mt-28 justify-between  flex-col my-5'>
+        {!carts?.length ? (
+            <div className='flex mt-28 flex-col justify-center items-center my-5'>
+               <AiOutlineShopping className='text-8xl border rounded-full p-4 bg-white text-textColor' />
+                <p className='font-bold text-4xl text-textColor py-2'>Your cart is empty</p>
+                <h1 className='text-textColor font-semibold py-2'>Browse our categories and discover our best deals!</h1>
+                <button type='button' className='bg-primary px-12 rounded-xl  my-10 py-2 text-2xl text-textColor' onClick={GoShopping}>Start Shopping</button>
+            </div>
+          ) : (
+             <CartCardProduct key={carts} data={carts} />
         )}
       </div>
       <Footer />
@@ -50,7 +57,22 @@ const CartCardProduct = ({ data }) => {
       });
     }
   }, [data, carts, dispatch]);
+  const addCartQty = () =>{
+    const cartitemsId = carts.id
+   let cartitemsQty = carts.productQty
+   if(cartitemsId === data.id){
+    return cartitemsQty++
+   }
+}
+  const minusCartQty = () =>{
+    const cartitemsId = carts.id
+   let cartitemsQty = carts.productQty
+   if(cartitemsId === data.id){
+    return cartitemsQty--
+   }else if(cartitemsQty===0){
 
+   }
+}
   const updateCartItemQuantity = (cartId, quantity) => {
     const updatedCart = carts.map((cart) => (cart.id === cartId ? { ...cart, productQty: quantity } : cart));
     dispatch({
@@ -61,17 +83,19 @@ const CartCardProduct = ({ data }) => {
 
   const deleteCartItem = (cartId) => {
     const updatedCart = carts.filter((cart) => cart.id !== cartId);
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
     dispatch({
       type: actionType.SET_CART_PRODUCT,
       carts: updatedCart,
     });
   };
+
   let price =carts.reduce((total, cart) => total + cart.productPrice * cart.productQty, 0).toFixed(2)
   const config = {
     reference: new Date().getTime().toString(),
-    email: 'optimaltrend247@gmail.com',
+    email:'owolabijunior12@gmail.com',
     amount: price*100,//product price should be replaced
-    publicKey: 'pk_live_de8199da4f8357b25e03941becd8aaa024dacf52',
+    publicKey: 'sk_test_e501c092502cd87640561fdaee143f4a0cfb77e1'
   };
   
   const handlePaystackSuccessAction = (reference) => {
@@ -96,9 +120,9 @@ const CartCardProduct = ({ data }) => {
     <div className='flex h-auto justify-between rounded-2xl border p-2 m-2 border-textColor flex-col'>
       <div className='flex flex-col'>
         {data.map((cart) => (
-          <div onClick={() => navigate(`/product-details/${cart._id}`)} className='flex w-full border-textColor border p-4 my-2' key={cart._id}>
+          <div  className='flex w-full border-textColor border p-4 my-2' key={cart._id}>
             <div className='flex justify-between w-full gap-3 items-center'>
-              <div className='flex gap-3'>
+              <div className='flex gap-3' onClick={() => navigate(`/product-details/${cart._id}`)}>
                 <img src={cart.imageURL} className='h-20 w-36 rounded-lg' alt='' />
                 <div>
                   <p className='font-bold text-2xl text-textColor '>{cart.name}</p>
@@ -109,7 +133,7 @@ const CartCardProduct = ({ data }) => {
                 <motion.button
                   className='text-4xl text-textColor'
                   whileTap={{ scale: 0.8 }}
-                  onClick={() => updateCartItemQuantity(cart.id, cart.productQty - 1)}
+                  onClick={minusCartQty}
                 >
                   <AiOutlineMinus />
                 </motion.button>

@@ -12,11 +12,13 @@ import { MdDelete } from "react-icons/md";
 import { storage } from "../configuration/firebase.configuration";
 import { useStateValue } from "../Context/StateProvider";
 import {  
+  baseURL,
   getAllProduct,
   SaveProduct,
 } from "../api";
 import {  toast } from 'react-toastify';
 import { actionType } from "../Context/reducer";
+import axios from "axios";
 // import { filterByLanguage, filters } from "../utils/supportfunctions";
 
 
@@ -148,51 +150,73 @@ export const DisabledButton = () => {
     });
   };
 
-  // const saveProduct = () => {
-  //   if (!productImage || !productName || !brand || !description || !productModelNumber||!productColor || !productPrice || !productType ||!productQuantity||!productSerialNumber ||!productWeight ||!productStatus || !productSize) {
-  //   toast.warning("Required fields are missing");    
-  //   } else {
-  //     setIsProduct(true);
-  //     const data = {
-  //       name: productName,
-  //       imageURL: productImage,
-  //       product_price:productPrice,
-  //       description:description,
-  //       brand:brand,
-  //       product_type:productType,
-  //       product_size:productSize,
-  //       product_color: productColor,
-  //       product_weight:productWeight,
-  //       Product_quantity:productQuantity,
-  //       product_status:productStatus,
-  //       product_model_number:productModelNumber,
-  //       product_serial_number:productSerialNumber
-  //     };
-  //     SaveProduct(data).then((res) => {
-  //       getAllProduct().then((product) => {
-  //         dispatch({
-  //           type: actionType.SET_ALL_PRODUCT,
-  //           product: product.data,
-  //         });
-  //       });
-  //     });
-  //     toast.success("Product Saved")
-  //     setIsProduct(false);
-  //     setProductImage(null);
-  //     setProductName("");
-  //     setProductPrice("");
-  //     setDescription("");
-  //     setBrand("");
-  //     setProductType("");
-  //     setProductColor("");
-  //     setProductWeight("");
-  //     setProductSize("");
-  //     setProductQuantity("");
-  //     setProductStatus("")
-  //     setProductModelNumber("");    
-  //     setProductSerialNumber("")
-  //   }
-  // };
+  const saveProduct = () => {
+    if (
+      !productImage ||
+      !productName ||
+      !brand ||
+      !description ||
+      !productModelNumber ||
+      !productColor ||
+      !productPrice ||
+      !productType ||
+      !productQuantity ||
+      !productSerialNumber ||
+      !productWeight ||
+      !productStatus ||
+      !productSize
+    ) {
+      toast.warning("Required fields are missing");
+    } else {
+      setIsProduct(true);
+      const data = {
+        name: productName,
+        imageURL: productImage,
+        product_price: productPrice,
+        description: description,
+        brand: brand,
+        product_type: productType,
+        product_size: productSize,
+        product_color: productColor,
+        product_weight: productWeight,
+        product_quantity: productQuantity,
+        product_status: productStatus,
+        product_model_number: productModelNumber,
+        product_serial_number: productSerialNumber,
+      };
+      axios
+        .post(`${baseURL}api/product/save`, data)
+        .then((res) => {
+          getAllProduct().then((product) => {
+            dispatch({
+              type: actionType.SET_ALL_PRODUCT,
+              product: product.data,
+            });
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          toast.error("Error saving product");
+        })
+        .finally(() => {
+          setIsProduct(false);
+          toast.success("Product Saved");
+          setProductImage(null);
+          setProductName("");
+          setProductPrice("");
+          setDescription("");
+          setBrand("");
+          setProductType("");
+          setProductColor("");
+          setProductWeight("");
+          setProductSize("");
+          setProductQuantity("");
+          setProductStatus("");
+          setProductModelNumber("");
+          setProductSerialNumber("");
+        });
+    }
+  };
 
   return (
     <div className="flex items-center justify-evenly w-full flex-wrap">
@@ -324,10 +348,10 @@ export const DisabledButton = () => {
               whileTap={{ scale: 0.8 }}        
               transition={{ duration: 0.3}}
              type='button' 
-            //  onClick={saveProduct}
-             className="px-8 py-2 rounded-md border-textColor text-textColor bg-primary border hover:shadow-lg"
+             onClick={saveProduct}
+             className="p-10 rounded-md border-textColor text-textColor bg-primary border hover:shadow-lg"
               >
-               Add To Cart
+               Add To Product
              </motion.button> 
           )}
         </div>
