@@ -29,28 +29,37 @@ const ProductDetails = () => {
   }, []);
   
   console.log(product)
-  const productLocalstorage = () =>{
+  const productLocalstorage = () => {
     try {
-      let cartSave = ({
-        id:productId,
-        name:product.name,
-        productPrice:product.product_price,
-        imageURL:product.imageURL,
-        productSize:product.product_size,
-        productQty:1,
-      })
-      localStorage.setItem("cart",cartSave);
-      toast.success(`${product.name} is added to cart`);         
-  } catch (error) {
-    console.log(error);
-    toast.error(error); 
-  }
-} 
+      const cartSave = {
+        id: productId,
+        name: product.name,
+        productPrice: product.product_price,
+        imageURL: product.imageURL,
+        productSize: product.product_size,
+        productQty: 1,
+      };
+
+      const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      existingCart.push(cartSave);
+      // localStorage.setItem("cart", JSON.stringify(existingCart));
+      dispatch({
+        type: actionType.SET_CARTS,
+        carts: existingCart,
+      });
+      toast.success(`${product.name} is added to cart`);
+      console.log("Cart Data in localStorage:", existingCart); 
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to add to cart");
+    }
+  };
+  
 let Price;
 if(product){
   Price=product.product_price
 }
-console.log(Price);
+
 const config = {
   reference: new Date().getTime().toString(),
   email: 'optimaltrend247@gmail.com',
@@ -70,7 +79,7 @@ const handlePaystackCloseAction = () => {
 
 const componentProps = {
   ...config,
-  text: 'Invest',
+  text: 'Buy Now',
   onSuccess: handlePaystackSuccessAction,
   onClose: handlePaystackCloseAction,
 };
@@ -108,12 +117,20 @@ const componentProps = {
           <motion.button
            whileTap={{ scale: 0.8 }}        
            transition={{ duration: 0.3}}
+           onClick={productLocalstorage}
           type='button' 
           className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
           >
-            Buy Now          
+            Add to Cart       
           </motion.button>                        
+          <motion.button
+           whileTap={{ scale: 0.8 }}        
+           transition={{ duration: 0.3}}
+          type='button' 
+          className=' bg-red-500 text-white m-2 p-2 rounded-xl' 
+          >            
           <PaystackButton {...componentProps} />
+          </motion.button>                        
         </div>
         <div className='mb-4'>
         <hr />
