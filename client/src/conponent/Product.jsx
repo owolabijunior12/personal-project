@@ -58,7 +58,7 @@ export const ProductContainer = ({ data }) => {
   
           <p className="text-base px-2 text-textColor font-semibold my-2">            
             <span className="block text-3xl  my-1">{data.name}</span>
-            <span className="block text-lg  my-1">${data.product_price}</span>
+            <span className="block text-lg  my-1">₦ {data.product_price}</span>
             <p className='flex'>
               <span className=''></span>              
               <span className="block text-sm  my-1">{data.product_status}</span>

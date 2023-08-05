@@ -349,7 +349,7 @@ export const DisabledButton = () => {
               transition={{ duration: 0.3}}
              type='button' 
              onClick={saveProduct}
-             className="p-10 rounded-md border-textColor text-textColor bg-primary border hover:shadow-lg"
+             className="p-3 rounded-md border-textColor text-textColor bg-primary border hover:shadow-lg"
               >
                Add To Product
              </motion.button> 

@@ -7,11 +7,9 @@ import Header from '../conponent/Header'
 
 const Checkout = () => {
   const [{carts},dispatch] =useStateValue()
-  // const [check, setCheck] =  useState();
+  const [check, setCheck] =  useState();
   let price =carts.reduce((total, cart) => total + cart.productPrice * cart.productQty, 0).toFixed(2)
   let quality =carts.reduce((total, cart) => total + cart.productQty, 0)
-  console.log(price);
-  console.log(quality);
   return (
     <div className='h-full w-full'>
       <Header />

@@ -25,12 +25,12 @@ function App() {
   const [auth,setAuth] = useState(false || window.localStorage.getItem("auth")===true);
   useEffect(()=>{
     firebaseAuth.onAuthStateChanged((userCred)=>{
-        console.log(userCred)
+        // console.log(userCred)
       if(userCred){
             userCred.getIdToken().then((token)=>{
-              console.log(token)
+            //   console.log(token)
               validateUser(token).then((data)=>{
-                console.log(data);
+                // console.log(data);
                 dispatch({
                   type: actionType.SET_USER,
                   user:data,
@@ -49,13 +49,20 @@ function App() {
     })
 },[])
 const cartProducts =   JSON.parse(localStorage.getItem("cart"));
+const userInfo=   JSON.parse(localStorage.getItem("userInfo")).user;
+console.log(userInfo);
 useEffect(() => {
       dispatch({
         type: actionType.SET_CARTS,
         carts:cartProducts  ,
       });   
 }, []);
-console.log(carts);
+useEffect(() => {
+      dispatch({
+        type: actionType.SET_USER,
+        user:userInfo  ,
+      });   
+}, []);
   return (
     
     <div className='min-w-[300px] h-auto  '>       

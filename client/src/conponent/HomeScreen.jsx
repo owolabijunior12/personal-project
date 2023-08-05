@@ -12,7 +12,7 @@ const HomeScreen = () => {
   const [{allProduct},dispatch] =useStateValue()
   let product;
   if(allProduct){
-    product=allProduct[0];    
+    product=allProduct[3];    
   } 
   return (
     <div className='flex flex-col w-full transition-all duration-500 h-full'>        

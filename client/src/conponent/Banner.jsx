@@ -22,7 +22,7 @@ const Banner = ({data}) => {
           <div className=' bottom-0 left-0'>
                 <p className='text-2xl py-2'>{data?.name}</p>
                 
-                <p> Price: ${data?.product_price}</p>
+                <p> Price: ₦ {data?.product_price}</p>
           </div>           
        </div>
       </div>

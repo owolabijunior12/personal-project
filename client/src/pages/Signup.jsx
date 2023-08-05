@@ -27,8 +27,7 @@ const handleSubmit = async (e) => {
 
     try {
       const response = await Signup(fullname,username,email,password);         
-         localStorage.setItem("username", username)
-         localStorage.setItem("email",email)
+      localStorage.setItem("userInfo", JSON.stringify(response));
         //  console.log(response);
       toast.success(`Sign up successful!`);
       setTimeout(() => {
@@ -44,19 +43,7 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className='login text-white'>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+    <div className='login text-white'>   
       <h2>Welcome to Iboytech store</h2>
       <div className='signup'>
         <FcGoogle /> Sign-up with Google
