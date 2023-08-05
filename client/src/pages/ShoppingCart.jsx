@@ -126,7 +126,7 @@ const CartCardProduct = ({ data }) => {
                 <img src={cart.imageURL} className='h-20 w-36 rounded-lg' alt='' />
                 <div>
                   <p className='font-bold text-2xl text-textColor '>{cart.name}</p>
-                  <p className='font-bold text-2xl text-textColor'>${cart.productPrice}</p>
+                  <p className='font-bold text-2xl text-textColor'>  ₦ {cart.productPrice}</p>
                 </div>
               </div>
               <div className='flex justify-between text-3xl w-28 items-center gap-2'>
@@ -161,7 +161,7 @@ const CartCardProduct = ({ data }) => {
       </div>
       <div className='flex items-center h-20 justify-between'>
         <h1 className='text-4xl text-white'>
-          Total: <span>${price}</span>
+          Total: <span> ₦ {price}</span>
         </h1>
         <motion.button
           whileTap={{ scale: 0.8 }}
@@ -170,7 +170,7 @@ const CartCardProduct = ({ data }) => {
           onClick={() => navigate(`/checkout `)}
           className=' bg-red-500 text-white m-2 p-2 rounded-xl'
         >
-          Buy now           
+          Process        
         </motion.button>
       </div>
     </div>

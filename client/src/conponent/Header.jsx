@@ -15,7 +15,7 @@ import {useStateValue} from '../Context/StateProvider'
 import { getAllCart } from '../api';
 import { actionType } from '../Context/reducer';
 const Header = () => {
-  const [{user,carts},dispatch] =useStateValue();
+  const [{carts},dispatch] =useStateValue();
   // const navigate = useNavigate();
   const [isMenu, setIsMenu] = useState()
   const {search} = useLocation;  
@@ -36,7 +36,10 @@ const Header = () => {
   //     });
   //   }
   // }, []);
+  
   const cartProducts =   JSON.parse(localStorage.getItem("cart"));
+  const user =   JSON.parse(localStorage.getItem("userInfo")).user;
+  // user.push(userinfo)
   return (
     <nav className={` bg-black z-40  w-full fixed top-0 py-6 text-textColor shadow-lg shadow-textColor`}>
     <div className="flex  justify-between  w-full">  
@@ -127,7 +130,7 @@ const Header = () => {
                         <Link to={"/user-profile"}>
                         <  div className=' flex gap-1' >
                                 <img src={profile}  className=' w-16 h-16 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />        
-                                <p className='text-4xl font-bold capitalize'> {user?.length >9?user.slice(0,11):user}<div className='text-lg'>Admin</div></p>
+                                <p className='text-4xl font-bold capitalize'> {user?.name}<div className='text-lg'>Admin</div></p>
                               </div>
                         </Link>         
                           

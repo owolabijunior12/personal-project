@@ -3,12 +3,12 @@ import Header from '../conponent/Header'
 import Footer from '../conponent/Footer'
 import profile from '../asset/profile.jpg';
 import { useLocation,Link } from 'react-router-dom';
-import { email, fullName, username } from '../utils/styles';
+import { useStateValue } from '../Context/StateProvider';
 const UserProfile = () => {
     const {search} = useLocation();
     const redirectInUrl = new URLSearchParams(search).get('redirect');
     const redirect = redirectInUrl ? redirectInUrl : '/';
-
+    const user =   JSON.parse(localStorage.getItem("userInfo")).user;
   return (
     <div className='w-full'>
         <Header/>
@@ -17,9 +17,9 @@ const UserProfile = () => {
                 <img src={profile}  className=' w-32 h-32 min-w[44px] object-cover rounded-full shadow-lg' alt="user-pic" />        
                 </div>
                 <div className='flex flex-col text-2xl text-textColor justify-center items-center'>
-                    <p className='underline capitalize font-bold w-full text-4xl m-10 text-center'>Username:   {username}</p>
-                    <p className='underline capitalize font-bold w-full text-4xl m-10 text-center'>Full- name:      {fullName}</p>
-                    <p className='underline capitalize font-bold w-full text-4xl m-10 text-center'> Email:    {email}</p>
+                    <p className='underline capitalize font-bold w-full text-4xl m-10 text-center'>Username:   {user?.username}</p>
+                    <p className='underline capitalize font-bold w-full text-4xl m-10 text-center'>Full- name:      {user?.name}</p>
+                    <p className='underline capitalize font-bold w-full text-4xl m-10 text-center'> Email:    {user?.email}</p>
                     {/* <div className='flex  text-textColor flex-col mb-6 justify-center items-center my-6'>
                         <p className='text-4xl'>Update your profile</p>
                         <input type="text" placeholder='home Address' className='border-0 bg-white border-b-2 w-full border-textColor ' />

@@ -10,6 +10,29 @@ const Checkout = () => {
   const [check, setCheck] =  useState();
   let price =carts.reduce((total, cart) => total + cart.productPrice * cart.productQty, 0).toFixed(2)
   let quality =carts.reduce((total, cart) => total + cart.productQty, 0)
+  const config = {
+    reference: new Date().getTime().toString(),
+    email:'owolabijunior12@gmail.com',
+    amount: price*100,//product price should be replaced
+    publicKey: 'sk_test_e501c092502cd87640561fdaee143f4a0cfb77e1'
+  };
+  
+  const handlePaystackSuccessAction = (reference) => {
+    console.log('Payment success');
+    // handleSubmit();
+    console.log(reference);
+  };
+  
+  const handlePaystackCloseAction = () => {
+    console.log('Payment dialog closed');
+  };
+  
+  const componentProps = {
+    ...config,
+    text: 'Buy Now',
+    onSuccess: handlePaystackSuccessAction,
+    onClose: handlePaystackCloseAction,
+  };
   return (
     <div className='h-full w-full'>
       <Header />

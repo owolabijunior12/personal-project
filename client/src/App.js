@@ -49,8 +49,8 @@ function App() {
     })
 },[])
 const cartProducts =   JSON.parse(localStorage.getItem("cart"));
-const userInfo=   JSON.parse(localStorage.getItem("userInfo")).user;
-console.log(userInfo);
+const userInfo=   JSON.parse(localStorage.getItem("userInfo"));
+
 useEffect(() => {
       dispatch({
         type: actionType.SET_CARTS,

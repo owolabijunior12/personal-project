@@ -26,11 +26,6 @@ export const isNotActiveStyles =
   "text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out";
 
 
-  export const fullName= localStorage.getItem("fullname")
-  export const username= localStorage.getItem("username")
-  export const email= localStorage.getItem("email")
-  // export const fullName= localStorage.getItem("fullnme")
-
   export const filters = [
     { id: 2, name: "ELECTRONIC", value: "electronic" },
     { id: 3, name: "GLOCIER", value: "gloceir" },

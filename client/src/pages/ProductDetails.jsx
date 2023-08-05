@@ -28,7 +28,7 @@ const ProductDetails = () => {
     
   }, []);
   
-  console.log(product)
+  // console.log(product) 
   const productLocalstorage = () => {
     try {
       const cartSave = {
