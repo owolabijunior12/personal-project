@@ -133,7 +133,7 @@ const CartCardProduct = ({ data }) => {
                 <motion.button
                   className='text-4xl text-textColor'
                   whileTap={{ scale: 0.8 }}
-                  onClick={minusCartQty}
+                  onClick={() => updateCartItemQuantity(cart.id, cart.productQty--)}
                 >
                   <AiOutlineMinus />
                 </motion.button>
@@ -167,10 +167,10 @@ const CartCardProduct = ({ data }) => {
           whileTap={{ scale: 0.8 }}
           transition={{ duration: 0.3 }}
           type='button'
-          // onClick={cartProduct}
+          onClick={() => navigate(`/checkout `)}
           className=' bg-red-500 text-white m-2 p-2 rounded-xl'
         >
-           <PaystackButton {...componentProps} />
+          Buy now           
         </motion.button>
       </div>
     </div>

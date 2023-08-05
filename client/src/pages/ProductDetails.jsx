@@ -55,7 +55,7 @@ const ProductDetails = () => {
         type: actionType.SET_CARTS,
         carts: existingCart,
       });
-      toast.success(` ₦{product.name} is added to cart`);
+      toast.success(` ${product.name} is added to cart`);
       console.log("Cart Data in localStorage:", existingCart);
     } catch (error) {
       console.log(error);
